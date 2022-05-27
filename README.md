@@ -24,12 +24,13 @@ Stretch requirements: <br />
 * ntegration with third-party apps/social media <br />
 * Add friends to the review → tagging friends <br /> <br />
 
-## Task Breakdown <br />
+## Task Breakdown
 
 Ability to post reviews <br />
 * Ability to enter text into a box, and submit, save to database <br />
 * Use the text in the database to create and post the review <br />
 * Style the create review form <br />
+
 User has the ability to log into/create an account <br />
 * Create/sign-in form → username, password, submit <br />
 * Create account form <br />
