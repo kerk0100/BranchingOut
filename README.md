@@ -1,10 +1,10 @@
-Project Progress → Team: Branchout out <br />
-Project Description <br />
+#Project Progress <br />
+##Project Description <br />
 
 Our project is a web application for the coffee enthusiasts of Vancouver. It provides a platform for people to discuss, review and recommend coffee shops in their area. The data it will store will be information on the cafes. For example, the address, hours, and reviews of the cafe. There will be 3 different tabs for the application: Profile, feed, and map. Users will be able to find coffee shops that suit their tastes and write reviews to recommend coffee shops to friends. For additional functionality, we want users to be able to post their reviews to other social media platforms. <br />
 
 
-Project Task Requirement <br />
+##Project Task Requirement <br />
 
 Minimal requirements: <br />
 * Ability to add friends <br />
@@ -22,7 +22,7 @@ Stretch requirements: <br />
 * ntegration with third-party apps/social media <br />
 * Add friends to the review → tagging friends <br /> <br />
 
-Task Breakdown <br />
+##Task Breakdown <br />
 
 Ability to post reviews <br />
 * Ability to enter text into a box, and submit, save to database <br />
@@ -33,3 +33,13 @@ User has the ability to log into/create an account <br />
 * Create account form <br />
 * Encrypt password <br />
 * Save all this data in the database <br />
+
+##Prototypes
+
+Login Page <br />
+
+![Alt](/images/login.png "login")
+
+Feed Page <br />
+![Alt](/images/feed.png "feed")
+
