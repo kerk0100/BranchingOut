@@ -1,17 +1,14 @@
 import logo from './logo.svg';
 import './Style.css';
-import NavBar from './NavBar.js';
+import Navbar from './Navbar.js';
 import Map from './Map.js';
-import coffee from './coffee.png';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function App() {
   return (
     <div className="body">
-          <NavBar />
-          <div className='image'>
-            <img className="image" src={coffee} />
-          </div>
-          <Map />
+          <Navbar />
     </div>
   );
 }
