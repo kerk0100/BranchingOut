@@ -3,7 +3,7 @@
 
 Our project is a web application for the coffee enthusiasts of Vancouver. It provides a platform for people to discuss, review and recommend coffee shops in their area. The data it will store will be information on the cafes. For example, the address, hours, and reviews of the cafe. There will be 3 different tabs for the application: Profile, feed, and map. Users will be able to find coffee shops that suit their tastes and write reviews to recommend coffee shops to friends. For additional functionality, we want users to be able to post their reviews to other social media platforms. <br />
 
-Component Structure - https://docs.google.com/document/d/1wJ_ZSL0ZYO0gXiSre6y8C4IEJBAYgdbBMjuWeJ89SZ8/edit
+Component Structure - https://docs.google.com/document/d/1wJ_ZSL0ZYO0gXiSre6y8C4IEJBAYgdbBMjuWeJ89SZ8/edit?usp=sharing
 
 ## Project Task Requirement
 
