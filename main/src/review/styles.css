@@ -1,0 +1,18 @@
+
+.review{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    max-height: 40vh;
+    border: 10px;
+    border-color: pink;
+}
+
+.reviewCard {
+    width: 50%;
+}
+
+.reviewCoffeeShop {
+    display: flex;
+    width: 50%
+}

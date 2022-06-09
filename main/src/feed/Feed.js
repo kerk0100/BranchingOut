@@ -1,7 +1,10 @@
+import Review from "../review/Review";
+import CoffeeShop from "../coffeeShop/CoffeeShop";
+
 function Feed() {
     return (
       <div className="body">
-            Hello
+            <Review text="this is a sample review" author="Amy" coffeeShop={<CoffeeShop/>}/>
       </div>
     );
   }
