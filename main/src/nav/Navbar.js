@@ -14,7 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //   https://retool.com/blog/building-a-react-navbar/ 
 const Navbar = () => {
   return (
-    <Router>    
+    <Router>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         
         <div className='image'>
@@ -51,15 +51,16 @@ const Navbar = () => {
             </li>
             </ul>
         </div>
-
         </nav>
         <Routes>
-          <Route path="/Feed" element={<Feed/>}/>
-          <Route path="/CoffeeMap" element={<CoffeeMap/>}/>
-          <Route path="/Login" element={<Login/>}/>
+            <Route path="/Feed" element={<Feed/>}/>
+            <Route path="/CoffeeMap" element={<CoffeeMap/>}/>
+            <Route path="/Login" element={<Login/>}/>
         </Routes>
-    </Router>
-  );
+    </Router>);
 };
 
 export default Navbar;
+
+
+
