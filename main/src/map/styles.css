@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+}
+   
+.reviews {
+    background: var(--hover-color);
+    flex-basis: 150vh;
+    margin: 5px;
+}
+
+.leaflet-container {
+    width: 100%;
+    height: 100vh;
+    float: right;
+}
+
+.image {
+    float: left;
+    width: 100px;
+}
+
+:root {
+    --primary-color: #6c5b7b;
+    --secondary-color: #7db2de;
+    --hover-color: #FFBF00;
+    --background-color: #ffffff;
+    --accent-color: #355c7d;
+  }
