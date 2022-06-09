@@ -55,7 +55,7 @@ const Navbar = () => {
         </nav>
         <Routes>
           <Route path="/Feed" element={<Feed/>}/>
-          <Route path="/Map" element={<CoffeeMap/>}/>
+          <Route path="/CoffeeMap" element={<CoffeeMap/>}/>
           <Route path="/Login" element={<Login/>}/>
         </Routes>
     </Router>
