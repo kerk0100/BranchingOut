@@ -1,6 +1,7 @@
 import React from "react";
 import Feed from "./Feed.js";
 import Map from "./Map.js";
+import CoffeeMap from "./CoffeeMap.js";
 import coffee from './coffee.png';
 import './Style.css';
 import {
@@ -44,7 +45,7 @@ const Navbar = () => {
                 </a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="Map">
+                <a className="nav-link" href="CoffeeMap">
                 Map
                 </a>
             </li>
@@ -59,7 +60,7 @@ const Navbar = () => {
         </nav>
         <Routes>
           <Route path="/Feed" element={<Feed/>}/>
-          <Route path="/Map" element={<Map/>}/>
+          <Route path="/Map" element={<CoffeeMap/>}/>
           {/* <Route path="/Login" element={<Login/>}/> */}
         </Routes>
     </Router>

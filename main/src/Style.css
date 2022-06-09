@@ -6,60 +6,22 @@
     --accent-color: #355c7d;
   }
 
-.topnav {
-    background-color: var(--primary-color);
-    overflow: hidden;
-  }
-  
-.topnav a {
-    float: right;
-    display: flex;
-    /* font color */
-    color: var(--background-color);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 3vmin;
-    font-family: 'Courier New', Courier, monospace;
-  
-  }
-
-.topnav p {
-    float: left;
-    display: flex;
-    /* font color */
-    color: var(--background-color);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 3vmin;
-    font-family: 'Courier New', Courier, monospace;
-}
-  
-.topnav a:hover {
-    color: var(--hover-color);
-  }
-  
-.topnav a.active {
-    background-color: var(--hover-color);
-    color: white;
-  }
-
-.map {
-    background-color: var(--hover-color);
-}
-
-.map p {
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 15vmin;
-}
-
 .image {
-    /* display: block; */
-    /* margin-left: auto;
-    margin-right: auto; */
     float: left;
     width: 100px;
-    /* width: 30%; */
+}
+   
+.leaflet-container {
+  width: 100%;
+  height: 100vh;
+  float: right;
+}
+
+.wrapper {
+ display: flex;
+}
+.reviews {
+  background: var(--hover-color);
+  flex-basis: 150vh;
+  margin: 5px;
 }
