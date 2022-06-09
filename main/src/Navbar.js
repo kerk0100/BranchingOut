@@ -1,16 +1,11 @@
 import React from "react";
 import Feed from "./Feed.js";
-import Map from "./Map.js";
 import CoffeeMap from "./CoffeeMap.js";
 import coffee from './coffee.png';
+import Login from "./Login.js";
 import './Style.css';
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link
-  } from "react-router-dom";
-  import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Routes, Route,} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //   bootstrap
 //   react-bootstrap
@@ -61,7 +56,7 @@ const Navbar = () => {
         <Routes>
           <Route path="/Feed" element={<Feed/>}/>
           <Route path="/Map" element={<CoffeeMap/>}/>
-          {/* <Route path="/Login" element={<Login/>}/> */}
+          <Route path="/Login" element={<Login/>}/>
         </Routes>
     </Router>
   );
