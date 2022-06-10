@@ -1,10 +1,13 @@
 import Review from "../review/Review";
 import CoffeeShop from "../coffeeShop/CoffeeShop";
+import ListFrame from "../list/ListFrame";
 
 function Feed() {
     return (
       <div className="body">
-            <Review text="this is a sample review" author="Amy" coffeeShop={<CoffeeShop/>}/>
+        <ListFrame elements={[<Review text="this is a sample review" author="Amy" coffeeShop={<CoffeeShop/>}/>]}/>
+
+            {/* <Review text="this is a sample review" author="Amy" coffeeShop={<CoffeeShop/>}/> */}
       </div>
     );
   }
