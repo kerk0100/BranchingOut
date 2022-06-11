@@ -1,5 +1,11 @@
+.friendCard {
+    display: flex;
+    flex-direction: column;
+    color: rgb(77, 49, 13);
+    width: 50%;
+}
 
-.review{
+.friend{
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -10,28 +16,9 @@
     padding: 1rem;
     margin-bottom: 10px;
     margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10;
     border: 2px solid#DC9287;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-}
-
-.reviewCard {
-    display: flex;
-    flex-direction: column;
-    color: rgb(77, 49, 13);
-    width: 50%;
-}
-
-.reviewCoffeeShop {
-    width: 50%;
-    justify-content: center;
-}
-
-.reviewAuthor {
-    align-self: flex-end;
-}
-
-.reviewText {
-    font-size: large;
-    padding-bottom: 5%;
 }
