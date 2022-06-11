@@ -2,15 +2,20 @@
     list-style: none;
     width:70%;
     float: left;
+    min-height: 150vh;
+    background-color: #faebd7;
 }
 
 .friendList {
     list-style: none;
+    min-height: 150vh;
     width:30%;
     float: left;
+    background-color: #faebd7;
 }
 
 .listHeader {
+    padding: 5px;
     text-align: center;
     font-size: 28px;
 }
