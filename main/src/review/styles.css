@@ -23,9 +23,8 @@
 }
 
 .reviewCoffeeShop {
-    display: flex;
     width: 50%;
-    justify-content: right;
+    justify-content: center;
 }
 
 .reviewAuthor {
