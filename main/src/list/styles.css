@@ -1,3 +1,16 @@
-.olFrame {
+.reviewList {
     list-style: none;
+    width:70%;
+    float: left;
+}
+
+.friendList {
+    list-style: none;
+    width:30%;
+    float: left;
+}
+
+.listHeader {
+    text-align: center;
+    font-size: 28px;
 }
