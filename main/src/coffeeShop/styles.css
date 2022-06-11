@@ -1,3 +1,56 @@
 .coffeeShop {
+    justify-content: center;
+    position: relative;
+    display: flex;
     flex: 1;
+    height: 100%;
+    width: 100%;
+}
+
+img {
+    border-radius: 10px;
+    position: relative;
+    align-items: flex-start;
+    width: 70%;
+    margin: 10px;
+    height: 90%;
+    
+}
+
+.overlay {
+    flex: 1;
+    border-radius: 10px;
+    margin: 10px;
+    width: 70%;
+    height: 90%;
+    margin: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    position: absolute;
+    color: wheat;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #DC9287;
+    color: rgb(77, 49, 13);
+}
+
+.coffeeShopName {
+    text-align: center;
+    padding: 10px;
+    font-size: larger;
+    justify-content: center;
+    height: 50%;
+    color: rgb(77, 49, 13);
+}
+
+.coffeeShopHours {
+    text-align: center;
+    padding: 10px;
+    font-size: larger;
+    justify-content: center;
+    color: rgb(77, 49, 13);
+}
+
+.coffeeShop:hover .overlay {
+    opacity: .9;
 }

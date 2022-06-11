@@ -5,14 +5,33 @@
     width: 80%;
     max-height: 40vh;
     border: 10px;
-    border-color: pink;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 2px solid#DC9287;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .reviewCard {
+    display: flex;
+    flex-direction: column;
+    color: rgb(77, 49, 13);
     width: 50%;
 }
 
 .reviewCoffeeShop {
-    display: flex;
-    width: 50%
+    width: 50%;
+    justify-content: center;
+}
+
+.reviewAuthor {
+    align-self: flex-end;
+}
+
+.reviewText {
+    font-size: large;
+    padding-bottom: 5%;
 }

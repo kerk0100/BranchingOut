@@ -3,7 +3,7 @@ import Feed from "../feed/Feed.js";
 import CoffeeMap from "../map/CoffeeMap.js";
 import coffee from './coffee.png';
 import Login from "../login/Login.js";
-import '../Style.css';
+import './styles.css';
 import { BrowserRouter as Router, Routes, Route,} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 

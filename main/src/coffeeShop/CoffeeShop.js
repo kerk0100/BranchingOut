@@ -1,8 +1,13 @@
+import "./styles.css";
 
-export default function CoffeeShop() {
+export default function CoffeeShop(props) {
     return (
-        
-         <img src="https://nomsmag.gumlet.io/wp-content/uploads/2021/09/best-burnaby-cafe-ki-cafe.jpg"/>
-        
+        <div className="coffeeShop">
+                <img src={props.image}/>
+                <div className="overlay">
+                    <div class="coffeeShopName"> {props.name}</div>
+                    <div class="coffeeShopHours"> {props.hours}</div>
+            </div>
+        </div>
     );
 }
