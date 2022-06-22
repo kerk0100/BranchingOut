@@ -1,20 +1,10 @@
 import React from "react";
-import Feed from "../feed/Feed.js";
-import CoffeeMap from "../map/CoffeeMap.js";
 import coffee from './coffee.png';
-import Login from "../login/Login.js";
 import './styles.css';
-import { BrowserRouter as Router, Routes, Route,} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-//   bootstrap
-//   react-bootstrap
-//   react-router-dom
-
-//   https://retool.com/blog/building-a-react-navbar/ 
 const Navbar = () => {
   return (
-    <Router>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         
         <div className='image'>
@@ -44,20 +34,9 @@ const Navbar = () => {
                 Map
                 </a>
             </li>
-            <li className="nav-item">
-                <a className="nav-link" href="Login">
-                Login
-                </a>
-            </li>
             </ul>
         </div>
-        </nav>
-        <Routes>
-            <Route path="/Feed" element={<Feed/>}/>
-            <Route path="/CoffeeMap" element={<CoffeeMap/>}/>
-            <Route path="/Login" element={<Login/>}/>
-        </Routes>
-    </Router>);
+        </nav>)
 };
 
 export default Navbar;

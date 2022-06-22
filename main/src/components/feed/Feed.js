@@ -3,6 +3,7 @@ import CoffeeShop from "../coffeeShop/CoffeeShop";
 import ListFrame from "../list/ListFrame";
 import Friend from "../friend/Friend";
 import "./styles.css"
+import Navbar from "../nav/Navbar";
 
 function Feed() {
 
@@ -18,10 +19,13 @@ function Feed() {
   var sampleReviews = [sampleReview1, sampleReview2, sampleReview3]
   var sampleFriends = [sampleFriend1, sampleFriend2, sampleFriend3, sampleFriend4]
     return (
-      <div className="body">
-        <ListFrame elements={sampleReviews} listName="reviewList" header="Reviews!"/>
-        <ListFrame elements={sampleFriends} listName="friendList" header="Friends List!"/>
-      </div>
+        <div>
+          <Navbar />
+          <div className="body">
+            <ListFrame elements={sampleReviews} listName="reviewList" header="Reviews!"/>
+            <ListFrame elements={sampleFriends} listName="friendList" header="Friends List!"/>
+          </div>
+        </div>
     );
   }
   
