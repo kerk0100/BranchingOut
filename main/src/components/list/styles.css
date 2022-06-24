@@ -6,6 +6,10 @@
     background-color: #faebd7;
 }
 
+.cafeList {
+    list-style: none;
+}
+
 .friendList {
     list-style: none;
     min-height: 150vh;
