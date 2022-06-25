@@ -8,3 +8,10 @@ export const loginUserAsync = createAsyncThunk(
         return await UserService.loginUser(userName, password);
     }
 );
+
+export const getFriendsAsync = createAsyncThunk(
+    actionTypes.GET_FRIENDS,
+    async () => {
+        return await UserService.getFriends();
+    }
+);

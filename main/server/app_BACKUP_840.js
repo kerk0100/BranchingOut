@@ -5,8 +5,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/loginRoutes');
+<<<<<<< HEAD
 var reviewRouter = require('./routes/reviewRoutes');
+=======
 var friendsRouter = require('./routes/friends');
+>>>>>>> fad4d0b (Retrieving friends list functionality)
 const cors = require('cors');
 
 var app = express();
@@ -20,7 +23,10 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
+<<<<<<< HEAD
 app.use('/reviews', reviewRouter);
+=======
 app.use('/friends', friendsRouter);
 
+>>>>>>> fad4d0b (Retrieving friends list functionality)
 module.exports = app;

@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATE } from '../utils';
-import {loginUserAsync} from "./thunk";
+import {loginUserAsync, getFriendsAsync} from "./thunk";
 
 const INITIAL_STATE = {
     userlist: [],
+    friendsList:[],
     loginUser: REQUEST_STATE.IDLE,
+    getFriends: REQUEST_STATE.IDLE,
     error: null
 };
 
@@ -24,6 +26,18 @@ const servicesSlice = createSlice({
             })
             .addCase(loginUserAsync.rejected, (state, action) => {
                 state.loginUser = REQUEST_STATE.REJECTED;
+                state.error = action.error;
+            })
+            .addCase(getFriendsAsync.pending, (state) => {
+                state.getFriends = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(getFriendsAsync.fulfilled, (state, action) => {
+                state.getFriends = REQUEST_STATE.FULFILLED;
+                state.friendsList = action.payload;
+            })
+            .addCase(getFriendsAsync.rejected, (state, action) => {
+                state.getFriends = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             });
     }
