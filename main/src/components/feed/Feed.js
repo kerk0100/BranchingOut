@@ -10,8 +10,7 @@ import { getReviewsAsync } from "../../reducers/reviews/thunk";
 import { getFriendsAsync } from "../../reducers/services/thunk";
 
 function Feed() {
-
-
+   const dispatch = useDispatch();
   function makeReviewComponents(review) {
     let coffeeShopComponent = <CoffeeShop name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>;
     return <Review key={review._id} text={review.text} author={review.author} coffeeShop={coffeeShopComponent}/>;
@@ -26,11 +25,11 @@ function Feed() {
 
   let friendsList = useSelector(state => state.services.friendsList)
 
-  const dispatch = useDispatch();
-
+ 
   useEffect(() => {
       dispatch(getFriendsAsync());
     }, []);
+
 
   const listItems = friendsList.map((friend) => <Friend name={friend.name} reviewCount={friend.reviewCount} lastReviewed={friend.lastReviewed}/>);
   
