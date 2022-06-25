@@ -3,15 +3,16 @@
 }
    
 .reviews {
-    background: var(--hover-color);
+    background: var(--background-color);
     flex-basis: 150vh;
-    margin: 5px;
+    margin: 10px;
 }
 
 .leaflet-container {
     width: 100%;
     height: 100vh;
     float: right;
+    border-color: var(--hover-color);
 }
 
 .image {
@@ -19,10 +20,16 @@
     width: 100px;
 }
 
+
+.search {
+    text-align: center;
+    margin-left: 10px;
+}
+
 :root {
-    --primary-color: #6c5b7b;
-    --secondary-color: #7db2de;
-    --hover-color: #FFBF00;
-    --background-color: #ffffff;
-    --accent-color: #355c7d;
+    --primary-color: #C1EAB1;
+    --secondary-color: #DC9287;
+    --hover-color: rgb(175, 121, 49);
+    --background-color: #faebd7;
+    --accent-color: rgb(77, 49, 13);
   }
