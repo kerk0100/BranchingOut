@@ -8,7 +8,8 @@ export default function Friend(props) {
                 <b> {props.name}</b>
                 </div>
                 <div className="friendReviewCount">
-                    Reviews posted: {props.count}
+                    Reviews posted: {props.reviewCount}<br></br>
+                    Last Reviewed: {props.lastReviewed}
                 </div>
             </div>
         </div>

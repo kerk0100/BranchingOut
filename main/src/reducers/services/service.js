@@ -16,6 +16,14 @@ const loginUser = async (userName, password) => {
     return data;
 };
 
+const getFriends = async () => {
+    const response = await fetch('http://localhost:3001/friends', {
+      method: 'GET'
+    });
+    return response.json();
+};
+
 export default {
-   loginUser
+   loginUser,
+   getFriends
 };
