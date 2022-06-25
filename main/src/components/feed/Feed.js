@@ -1,46 +1,44 @@
 import Review from "../review/Review";
+import React, { useEffect } from 'react';
 import CoffeeShop from "../coffeeShop/CoffeeShop";
 import ListFrame from "../list/ListFrame";
 import Friend from "../friend/Friend";
 import "./styles.css"
 import Navbar from "../nav/Navbar";
-import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsAsync } from "../../reducers/reviews/thunk";
-
+import { getFriendsAsync } from "../../reducers/services/thunk";
 
 function Feed() {
-
-
+   const dispatch = useDispatch();
   function makeReviewComponents(review) {
     let coffeeShopComponent = <CoffeeShop name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>;
     return <Review key={review._id} text={review.text} author={review.author} coffeeShop={coffeeShopComponent}/>;
   }
 
-
-  let sampleFriend1 = <Friend name="Benji" count="6"/>
-  let sampleFriend2 = <Friend name="Amy" count="9"/>
-  let sampleFriend3 = <Friend name="Lauren" count="42"/>
-  let sampleFriend4 = <Friend name="Liv" count="0"/>
-  
-  
-  var sampleFriends = [sampleFriend1, sampleFriend2, sampleFriend3, sampleFriend4]
-
   let reviewList = useSelector((state) => state.reviews.list);
   let reviewListComponents = reviewList.map(element => makeReviewComponents(element));
 
-  const dispatch = useDispatch();
-    
     useEffect(() => {
         dispatch(getReviewsAsync());
       }, []);
-      
+
+  let friendsList = useSelector(state => state.services.friendsList)
+
+ 
+  useEffect(() => {
+      dispatch(getFriendsAsync());
+    }, []);
+
+
+  const listItems = friendsList.map((friend) => <Friend name={friend.name} reviewCount={friend.reviewCount} lastReviewed={friend.lastReviewed}/>);
+  
     return (
         <div>
           <Navbar />
           <div className="body">
             <ListFrame key="review" elements={reviewListComponents} listName="reviewList" />
-            <ListFrame key="friends" elements={sampleFriends} listName="friendList" />
+            <ListFrame elements= {listItems} listName="friendList" header="Friends List!"/>
           </div>
         </div>
     );
