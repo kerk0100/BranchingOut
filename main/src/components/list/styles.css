@@ -1,5 +1,6 @@
 .reviewList {
     list-style: none;
+    margin: auto;
     width:70%;
     float: left;
     min-height: 150vh;
@@ -11,6 +12,7 @@
 }
 
 .friendList {
+    margin: auto;
     list-style: none;
     min-height: 150vh;
     width:30%;

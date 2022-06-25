@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import './login.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import coffee from "../nav/coffee.png";
-import PropTypes from 'prop-types';
 import { loginUserAsync } from "../../reducers/services/thunk";
 import { useDispatch } from "react-redux";
 
