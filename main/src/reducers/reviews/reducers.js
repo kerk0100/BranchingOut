@@ -1,15 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATE } from '../utils';
-import {createReviewAsync} from "./thunk";
+import {createReviewAsync, getReviewsAsync} from "./thunk";
 
 const INITIAL_STATE = {
-    reviewList: [],
+    list: [],
     createReview: REQUEST_STATE.IDLE,
+    getReviews: REQUEST_STATE.IDLE,
     error: null
 };
 
 const servicesSlice = createSlice({
-    name: 'reviewss',
+    name: 'reviews',
     initialState: INITIAL_STATE,
     reducers: {},
     extraReducers: (builder) => {
@@ -24,6 +25,18 @@ const servicesSlice = createSlice({
             })
             .addCase(createReviewAsync.rejected, (state, action) => {
                 state.createReview = REQUEST_STATE.REJECTED;
+                state.error = action.error;
+            })
+            .addCase(getReviewsAsync.pending, (state) => {
+                state.getReviews = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(getReviewsAsync.fulfilled, (state, action) => {
+                state.getReviews = REQUEST_STATE.FULFILLED;
+                state.list = action.payload;
+            })
+            .addCase(getReviewsAsync.rejected, (state, action) => {
+                state.getReviews = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             });
     }

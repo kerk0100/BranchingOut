@@ -1,5 +1,5 @@
 const createReview = async (review) => {
-    const response = await fetch('http://localhost:3001/login', {
+    const response = await fetch('http://localhost:3001/reviews', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -16,6 +16,15 @@ const createReview = async (review) => {
     return data;
 };
 
+const getReviews = async () => {
+    const response = await fetch('http://localhost:3001/reviews', {
+      method: 'GET'
+    });
+    let res = await response.json();
+    return res;
+  };
+
 export default {
-   createReview
+   createReview,
+   getReviews
 };

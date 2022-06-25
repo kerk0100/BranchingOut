@@ -8,3 +8,10 @@ export const createReviewAsync = createAsyncThunk(
         return await reviewService.createReview();
     }
 );
+
+export const getReviewsAsync = createAsyncThunk(
+    actionTypes.GET_REVIEWS,
+    async () => {
+        return await reviewService.getReviews();
+    }
+);
