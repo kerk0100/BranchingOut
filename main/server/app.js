@@ -1,15 +1,16 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/loginRoutes');
-var reviewRouter = require('./routes/reviewRoutes');
-var friendsRouter = require('./routes/friends');
+const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/loginRoutes');
+const reviewRouter = require('./routes/reviewRoutes');
+const friendsRouter = require('./routes/friends');
 const cors = require('cors');
+const mongoose = require("mongoose");
 
-var app = express();
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -22,5 +23,7 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/reviews', reviewRouter);
 app.use('/friends', friendsRouter);
+
+mongoose.connect('mongodb+srv://coffee-brewsters:coffee-brewsters-basics@sandbox.vc456ti.mongodb.net/CoffeeBrewsters?retryWrites=true&w=majority');
 
 module.exports = app;
