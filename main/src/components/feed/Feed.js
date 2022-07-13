@@ -8,6 +8,7 @@ import Navbar from "../nav/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsAsync } from "../../reducers/reviews/thunk";
 import { getFriendsAsync } from "../../reducers/services/thunk";
+import ReviewForm from "../reviewForm/reviewForm";
 
 function Feed() {
    const dispatch = useDispatch();
@@ -38,7 +39,9 @@ function Feed() {
           <Navbar />
           <div className="body">
             <ListFrame key="review" elements={reviewListComponents} listName="reviewList" />
-            <ListFrame elements= {listItems} listName="friendList" header="Friends List!"/>
+            <ListFrame elements= {listItems} listName="friendList"/>
+            <ReviewForm/>
+
           </div>
         </div>
     );
