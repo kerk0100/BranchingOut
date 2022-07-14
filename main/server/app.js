@@ -7,6 +7,7 @@ const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/loginRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const friendsRouter = require('./routes/friends');
+const mapRouter = require('./routes/mapRoutes');
 const cors = require('cors');
 const mongoose = require("mongoose");
 
@@ -23,6 +24,7 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/reviews', reviewRouter);
 app.use('/friends', friendsRouter);
+app.use('/mapReviews', mapRouter);
 
 mongoose.connect('mongodb+srv://coffee-brewsters:coffee-brewsters-basics@sandbox.vc456ti.mongodb.net/CoffeeBrewsters?retryWrites=true&w=majority');
 

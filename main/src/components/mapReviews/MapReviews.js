@@ -5,10 +5,12 @@ export default function MapReviews(props) {
         <div className="mapReview">
             <div className="cafeCard">
                 <div className="cafeName">
-                <b> {props.name}</b>
+                <b> {props.cafeName}</b>
                 </div>
                 <div className="cafeDescription">
-                    About: {props.description}
+                    Reviews: {props.reviews}
+                    <br/>
+                    Hours: {props.hours}
                 </div>
             </div>
         </div>
