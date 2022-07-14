@@ -10,8 +10,8 @@ const ListFrame = (props) => {
         <header className="listHeader">
         <b>{props.header}</b>
       </header>
-          {listElements.map((el) => (
-            <li>
+          {listElements.map((el, i) => (
+            <li key={i}>
               {el}
             </li>
           ))}
