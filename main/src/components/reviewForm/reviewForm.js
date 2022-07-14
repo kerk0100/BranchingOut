@@ -8,12 +8,15 @@ export default function ReviewForm(props) {
 
     let sampleCoffeeShop = {name: "Sample",  image:"https://nomsmag.gumlet.io/wp-content/uploads/2021/09/best-burnaby-cafe-ki-cafe.jpg", hours:"Moki is cute"};
 
-    const [review, setValue] = useState({text: "enter review here!", author: "useState.getLoggedinUser"});
+    const [review, setValue] = useState({text: "enter review here!", author: "useState.getLoggedinUser", coffeeShop:{name: "name", image: "test", hours: "test"}});
     const dispatch = useDispatch();
 
     function handleSubmit(event) {
         //event.preventDefault();
-        dispatch(createReviewAsync({...review, coffeeShop: sampleCoffeeShop}));
+        setValue({review, 'coffeeShop': sampleCoffeeShop})
+        //console.log(review);
+        //testReview = review['coffeeShop'] = review;
+        dispatch(createReviewAsync(review));
     }
 
     function handleChange(event) {

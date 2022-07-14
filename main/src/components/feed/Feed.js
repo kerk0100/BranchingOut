@@ -3,12 +3,12 @@ import React, { useEffect } from 'react';
 import CoffeeShop from "../coffeeShop/CoffeeShop";
 import ListFrame from "../list/ListFrame";
 import Friend from "../friend/Friend";
+import ReviewForm from "../reviewForm/reviewForm"
 import "./styles.css"
 import Navbar from "../nav/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsAsync } from "../../reducers/reviews/thunk";
 import { getFriendsAsync } from "../../reducers/services/thunk";
-import ReviewForm from "../reviewForm/reviewForm";
 
 function Feed() {
    const dispatch = useDispatch();
@@ -41,7 +41,6 @@ function Feed() {
             <ListFrame key="review" elements={reviewListComponents} listName="reviewList" />
             <ListFrame elements= {listItems} listName="friendList"/>
             <ReviewForm/>
-
           </div>
         </div>
     );
