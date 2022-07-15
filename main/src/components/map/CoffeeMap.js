@@ -18,12 +18,14 @@ function CoffeeMap() {
       return <MapReviews key={review._id} cafeName={review.cafeName} reviews={review.reviews} hours={review.hours} address={review.address} image={review.image}/>;
     }
   
-    let reviewList = useSelector((state) => state.reviews.list);
+    let reviewList = useSelector((state) => state.mapReviews.list);
     let reviewListComponents = reviewList.map(element => makeReviewComponents(element));
   
       useEffect(() => {
           dispatch(getReviewsAsync());
         }, []);
+    
+    console.log(reviewList);
 
     const startPosition = [49.266683211803446, -123.16634827187337]
     const enroute = [49.27141046145708, -123.15461071089254]
