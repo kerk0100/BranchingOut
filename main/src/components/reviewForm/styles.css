@@ -2,7 +2,7 @@
 
  .reviewFormWrapper {
     height: 100vh; 
-    background-color: #DC9287;
+    background-image: url("./test.png");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,13 +14,30 @@
  }
 
  input {
-    width: x;
-    height: 10vh;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    flex-grow: 1;
+    width: 100%;
+    height: 70%;
+    color: brown;
+    
   }
+
+  .labelForm {
+      height: 80%;
+  }
+
+  /* label {
+      width: 100%;
+  } */
 
 
  form {
      background-color: #faebd7;
+     display: flex;
+     flex-direction: column;
+     height: 80%;
+     width: 80%;
      padding: 10px;
      margin: 10px;
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -28,11 +45,38 @@
  }
 
  .formButtons {
-    padding: 10vh;
+    padding: 3vh;
     display: flex;
-    flex-direction: row;
+    align-items: center;
+
  }
 
  button {
      border-radius: 10px;
+     flex-direction: row;
+     background-color: #C1EAB1;
+     color: rgb(71, 30, 3);
+     border-style: none;
+     box-sizing: border-box;
+     cursor: pointer;
+     display: inline-block;
+     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+     font-size: 14px;
+     font-weight: 500;
+     height: 40px;
+     line-height: 20px;
+     list-style: none;
+     margin: 0;
+     outline: none;
+     padding: 10px 16px;
+     margin: 20px;
+     text-align: center;
+     text-decoration: none;
+     transition: color 100ms;
+     vertical-align: baseline;
+     user-select: none;
+     -webkit-user-select: none;
+     touch-action: manipulation;
+
  }

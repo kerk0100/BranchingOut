@@ -35,17 +35,14 @@ export default function ReviewForm(props) {
         <Navbar />
         <div className="reviewFormWrapper">
             <form onSubmit={handleSubmit} onReset={handleClear}>
-                <label>
-                    <div className= "inputForm">
+                <div className = "labelForm"> 
                     <input
                         name="reviewText"
                         type="textarea"
                         value={review.text}
                         onChange= {e => handleChange(e)}
                     />
-                    </div>
-
-                </label>
+                </div>
                 <div className= "formButtons">
                     <button type= "submit"> Submit</button>
                     <button type= "reset"> Clear </button>
