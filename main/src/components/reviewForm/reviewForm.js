@@ -2,6 +2,7 @@ import './styles.css';
 import React, { useState } from "react";
 import { createReviewAsync } from '../../reducers/reviews/thunk.js';
 import { useDispatch} from "react-redux";
+import Navbar from "../nav/Navbar";
 
 
 export default function ReviewForm(props) {
@@ -30,10 +31,11 @@ export default function ReviewForm(props) {
     }
 
     return (
+        <>
+        <Navbar />
         <div className="reviewFormWrapper">
             <form onSubmit={handleSubmit} onReset={handleClear}>
                 <label>
-                    Create a Review
                     <div className= "inputForm">
                     <input
                         name="reviewText"
@@ -44,10 +46,12 @@ export default function ReviewForm(props) {
                     </div>
 
                 </label>
-                <button type= "submit"> Submit</button>
-                <button type= "reset"> Clear </button>
+                <div className= "formButtons">
+                    <button type= "submit"> Submit</button>
+                    <button type= "reset"> Clear </button>
+                </div>
             </form>
-
         </div>
+    </>
     );
 }

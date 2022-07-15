@@ -10,5 +10,29 @@
  }
 
  .inputForm {
-    background-color: white;
+    background-color: white;  
+ }
+
+ input {
+    width: x;
+    height: 10vh;
+  }
+
+
+ form {
+     background-color: #faebd7;
+     padding: 10px;
+     margin: 10px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     border-radius: 10px;
+ }
+
+ .formButtons {
+    padding: 10vh;
+    display: flex;
+    flex-direction: row;
+ }
+
+ button {
+     border-radius: 10px;
  }
