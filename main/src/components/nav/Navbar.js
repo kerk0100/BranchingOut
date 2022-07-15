@@ -34,6 +34,11 @@ const Navbar = () => {
                 Map
                 </a>
             </li>
+            <li className="nav-item">
+                <a className="nav-link" href="Review">
+                Create a Review
+                </a>
+            </li>
             </ul>
         </div>
         </nav>)

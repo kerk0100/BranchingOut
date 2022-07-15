@@ -22,14 +22,12 @@ router.get('/', async function(req, res, next) {
 
 /* POST reviews. */
 router.post('/', async function (req, res, next) {
-  const coffeeShop = {name: req.body.name, image:req.body.image, hours: req.body.hours}
+  const coffeeShop = {name: req.body.coffeeShop.name, image:req.body.coffeeShop.image, hours: req.body.coffeeShop.hours}
   const review = new Review({text: req.body.text, author: req.body.author, coffeeShop: coffeeShop});
-  // reviews.push(review);
+  //reviews.push(review);
+  console.log(review);
   const addedReview = await queries.addOneReview(review);
-  return res
-      .setHeader('Content-Type', 'application/json')
-      .status(201)
-      .send(addedReview);
+  return res.send(addedReview);
 });
 
 module.exports = router;

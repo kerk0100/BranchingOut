@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import {Route, Routes} from "react-router";
 import Feed from "./components/feed/Feed";
 import CoffeeMap from "./components/map/CoffeeMap";
+import ReviewForm from './components/reviewForm/reviewForm';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                   <Route path="/" element={<Login />} />
                   <Route path="/Feed" element={<Feed />} />
                   <Route path="/CoffeeMap" element={<CoffeeMap/>} />
+                  <Route path="/Review" element={<ReviewForm/>} />
               </Routes>
           </BrowserRouter>
       </div>

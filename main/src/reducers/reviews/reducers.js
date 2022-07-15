@@ -20,6 +20,7 @@ const servicesSlice = createSlice({
                 state.error = null;
             })
             .addCase(createReviewAsync.fulfilled, (state, action) => {
+                //console.log(action.payload)
                 state.createReview = REQUEST_STATE.FULFILLED;
                 state.reviewList.push(action.payload);
             })
