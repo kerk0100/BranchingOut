@@ -9,7 +9,7 @@ import Feed from "./components/feed/Feed";
 import CoffeeMap from "./components/map/CoffeeMap";
 import ReviewForm from './components/reviewForm/reviewForm';
 import SignUp from "./components/signUp/SignUp";
-import { V0alpha2Api, Configuration, Session, Identity } from '@ory/client'
+//import { V0alpha2Api, Configuration, Session, Identity } from '@ory/client'
 import ProfilePage from "./components/profile/profilePage";
 
 function App() {
