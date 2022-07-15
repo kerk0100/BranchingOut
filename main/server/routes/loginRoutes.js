@@ -3,6 +3,7 @@ const router = express.Router();
 const queries = require('../db/queries/userQueries');
 const generateData = require('../db/generate-data')
 
+
 /* GET users. */
 router.get('/', async function(req, res, next) {
   // await generateData();

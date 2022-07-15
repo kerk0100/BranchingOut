@@ -34,7 +34,7 @@ export default function ReviewForm(props) {
         <>
         <Navbar />
         <div className="reviewFormWrapper">
-            <form onSubmit={handleSubmit} onReset={handleClear}>
+            <form id="reviewForm" onSubmit={handleSubmit} onReset={handleClear}>
                 <div className = "labelForm"> 
                     <input
                         name="reviewText"

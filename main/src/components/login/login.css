@@ -7,13 +7,25 @@
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .loginBtn {
-    width: 100px;
+    width: 200px;
     border-radius: 8px;
     margin: 10px;
+    background: white;
+    border: 2px solid black;
+    padding: 0px;
+
 }
+
+.createA {
+    font-size: 16px;
+    font-weight: bold;
+}
+
 
 label {
     margin-right: 10px;
@@ -30,7 +42,7 @@ label {
     border: 10px solid #DC9287;
 }
 
-.app {
+.appLogin {
     display: flex;
     align-items: center;
     justify-content: center;

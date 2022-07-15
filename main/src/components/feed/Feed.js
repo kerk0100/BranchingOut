@@ -8,7 +8,7 @@ import "./styles.css"
 import Navbar from "../nav/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsAsync } from "../../reducers/reviews/thunk";
-import { getFriendsAsync } from "../../reducers/services/thunk";
+import { getFriendsAsync } from "../../reducers/users/thunk";
 
 function Feed() {
    const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function Feed() {
         dispatch(getReviewsAsync());
       }, []);
 
-  let friendsList = useSelector(state => state.services.friendsList)
+  let friendsList = useSelector(state => state.services.friendsList);
 
  
   useEffect(() => {

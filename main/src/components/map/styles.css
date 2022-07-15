@@ -15,11 +15,6 @@
     border-color: var(--hover-color);
 }
 
-.image {
-    float: left;
-    width: 100px;
-}
-
 
 .search {
     text-align: center;
