@@ -40,7 +40,6 @@ function Feed() {
           <div className="body">
             <ListFrame key="review" elements={reviewListComponents} listName="reviewList" />
             <ListFrame elements= {listItems} listName="friendList"/>
-            <ReviewForm/>
           </div>
         </div>
     );

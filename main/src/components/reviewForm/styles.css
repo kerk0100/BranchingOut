@@ -1,0 +1,14 @@
+
+
+ .reviewFormWrapper {
+    height: 100vh; 
+    background-color: #DC9287;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh;
+ }
+
+ .inputForm {
+    background-color: white;
+ }

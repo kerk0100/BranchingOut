@@ -23,6 +23,7 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/reviews', reviewRouter);
 app.use('/friends', friendsRouter);
+//app.use('/friends', friendsRouter);
 
 mongoose.connect('mongodb+srv://coffee-brewsters:coffee-brewsters-basics@sandbox.vc456ti.mongodb.net/CoffeeBrewsters?retryWrites=true&w=majority');
 
