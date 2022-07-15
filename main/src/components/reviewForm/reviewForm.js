@@ -37,15 +37,34 @@ export default function ReviewForm(props) {
             <form id="reviewForm" onSubmit={handleSubmit} onReset={handleClear}>
                 <div className = "labelForm"> 
                     <input
-                        name="reviewText"
+                        id="inputReviewText"
+                        name="text"
                         type="textarea"
                         value={review.text}
+                        onChange= {e => handleChange(e)}>
+                    </input>
+                    <div className = "coffeeShopSearchForm">
+                        <p>Cafe Name</p>
+                    <input
+                        id="inputCoffeeShopName"
+                        name="coffeeShop.name"
+                        type="textarea"
+                        value= {review.coffeeShop.text}
+                        onChange= {e => handleChange(e)}> 
+                    </input>
+                    <p>Cafe Address</p>
+                    <input
+                        id="inputCoffeeShopAddress"
+                        name="coffeeShop.address"
+                        type="textarea"
+                        value={review.coffeeShop.text}
                         onChange= {e => handleChange(e)}
                     />
+                    </div>
                 </div>
                 <div className= "formButtons">
-                    <button type= "submit"> Submit</button>
-                    <button type= "reset"> Clear </button>
+                    <button id = "buttonForm" type= "submit"> Submit</button>
+                    <button id = "buttonForm" type= "reset"> Clear </button>
                 </div>
             </form>
         </div>
