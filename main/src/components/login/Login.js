@@ -29,7 +29,7 @@ export default function Login() {
     }
 
     return (
-            <div className="app">
+            <div className="appLogin">
                 <div className="login-form">
                     <div className='row-login'>
                         <img className="login-image" src={coffee} />

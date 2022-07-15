@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import {Route, Routes} from "react-router";
 import Feed from "./components/feed/Feed";
 import CoffeeMap from "./components/map/CoffeeMap";
+import ReviewForm from './components/reviewForm/reviewForm';
 import SignUp from "./components/signUp/SignUp";
 import { V0alpha2Api, Configuration, Session, Identity } from '@ory/client'
 import ProfilePage from "./components/profile/profilePage";
@@ -64,6 +65,7 @@ function App() {
                   <Route path="/SignUp" element={<SignUp />} />
                   <Route path="/Feed" element={<Feed />} />
                   <Route path="/CoffeeMap" element={<CoffeeMap/>} />
+                  <Route path="/Review" element={<ReviewForm/>} />
                   <Route path="/Profile" element={<ProfilePage/>} />
               </Routes>
           </BrowserRouter>

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import CoffeeShop from "../coffeeShop/CoffeeShop";
 import ListFrame from "../list/ListFrame";
 import Friend from "../friend/Friend";
+import ReviewForm from "../reviewForm/reviewForm"
 import "./styles.css"
 import Navbar from "../nav/Navbar";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +39,7 @@ function Feed() {
           <Navbar />
           <div className="body">
             <ListFrame key="review" elements={reviewListComponents} listName="reviewList" />
-            <ListFrame elements= {listItems} listName="friendList" header="Friends List!"/>
+            <ListFrame elements= {listItems} listName="friendList"/>
           </div>
         </div>
     );

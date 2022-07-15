@@ -1,4 +1,5 @@
 const createReview = async (review) => {
+    //console.log(review)
     const response = await fetch('http://localhost:3001/reviews', {
         method: 'POST',
         headers: {
