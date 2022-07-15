@@ -1,4 +1,13 @@
+const getUsers = async () => {
+    const response = await fetch('http://localhost:3001/login', {
+        method: 'GET'
+    });
+    return response.json();
+};
+
+
 const loginUser = async (userName, password) => {
+
     const response = await fetch('http://localhost:3001/login', {
         method: 'POST',
         headers: {
@@ -24,6 +33,7 @@ const getFriends = async () => {
 };
 
 export default {
-   loginUser,
-   getFriends
+    getUsers,
+    loginUser,
+    getFriends
 };
