@@ -21,7 +21,7 @@ router.get('/auth/:username/:password', async function (req, res, next) {
 
 router.get('/auth/:username', async function (req, res, next) {
     const user = await queries.getUser({username: req.params.username});
-    console.log('yser ' + user);
+    console.log('user ' + user);
     if (!user) return res.status(200).send({ message: 'User not taken' });
 
     return res.send(user);

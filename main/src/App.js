@@ -13,8 +13,6 @@ import SignUp from "./components/signUp/SignUp";
 import ProfilePage from "./components/profile/profilePage";
 
 function App() {
-    // clear local storage at start
-    localStorage.clear();
 
     return (
       <div className="body">

@@ -23,7 +23,7 @@ export default function SignUp() {
         const user = await dispatch(checkUserNameFreeAsync(username));
         if (user.payload.message !== "User not taken") {
             setInvalidUSer(true);
-            console.log('DB document returned: ', user.payload,);
+            console.log('DB document returned: ', user.payload);
             e.preventDefault();
         } else if (username === "" || password === "") {
            setNoEntry(true);
@@ -31,6 +31,7 @@ export default function SignUp() {
             setInvalidUSer(false);
             setNoEntry(false);
             localStorage.setItem("username", username);
+            localStorage.setItem("friendsCount", "0");
             handleSubmit();
             window.location.href="/Feed";
         }
