@@ -28,17 +28,23 @@ function Feed() {
 
  
   useEffect(() => {
-      dispatch(getFriendsAsync());
+      dispatch(getFriendsAsync(localStorage.username));
     }, []);
 
 
-  const listItems = friendsList.map((friend) => <Friend name={friend.name} reviewCount={friend.reviewCount} lastReviewed={friend.lastReviewed}/>);
+  const listItems = friendsList.map((friend) => <Friend name={friend.username}/>);
   
     return (
         <div>
           <Navbar />
           <div className="body">
             <ListFrame key="review" elements={reviewListComponents} listName="reviewList" />
+            <div className="fList">
+              <h1 className="fListHeader"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Friends List</h1>
+            </div>
+            <div className="fList">
+              <input className="addFriendbutton" type="button" value="+"></input> 
+              </div>
             <ListFrame elements= {listItems} listName="friendList"/>
           </div>
         </div>
