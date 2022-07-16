@@ -8,7 +8,7 @@ import Navbar from "../nav/Navbar";
 export default function ReviewForm(props) {
 
     const [coffeeShop, setCoffeeShopValue] = useState({name: "name", image: "test", hours: "test", address: "address"});
-    const [review, setValue] = useState({text: "enter review here!", author: "useState.getLoggedinUser", coffeeShop: coffeeShop});
+    const [review, setValue] = useState({text: "enter review here!", author: localStorage.getItem("username"), coffeeShop: coffeeShop});
     const dispatch = useDispatch();
 
     function handleSubmit(event) {
