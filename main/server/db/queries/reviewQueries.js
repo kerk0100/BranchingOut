@@ -9,10 +9,14 @@ const reviewQueries = {
         const review = await Review.create(document);
         return review;
     },
+    countReviews: async function (filter) {
+    const reviews = await Review.countDocuments(filter);
+    return reviews;
+    },
     updateOneReview: async function (filter, set) {
         const review = await Review.updateOne(filter, set);
         return review;
-    },
+    }
 }
 
 

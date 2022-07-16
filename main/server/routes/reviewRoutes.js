@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-// const { v4: uuid } = require('uuid');
 const queries = require('../db/queries/reviewQueries');
 const Review = require('../db/models/reviewModel');
-const generateData = require('../db/generate-data');
 
 
 /* GET reviews. */
@@ -12,6 +10,13 @@ router.get('/', async function(req, res, next) {
   res.send(reviews);
 });
 
+router.get('/count/:username', async function(req, res, next) {
+  const reviews = await queries.countReviews({author: req.params.username});
+  console.log('reviews ' + reviews);
+  if (!reviews) return res.status(404).send({ message: 'No reviews found' });
+
+  return res.send(""+reviews);
+});
 
 /* POST reviews. */
 router.post('/', async function (req, res, next) {
