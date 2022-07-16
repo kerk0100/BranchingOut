@@ -38,8 +38,8 @@ const loginUser = async (userName, password) => {
     return data;
 };
 
-const getFriends = async () => {
-    const response = await fetch('http://localhost:3001/friends', {
+const getFriends = async (username) => {
+    const response = await fetch('http://localhost:3001/friends/'+username, {
       method: 'GET'
     });
     return response.json();

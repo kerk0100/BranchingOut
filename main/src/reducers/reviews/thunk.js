@@ -22,3 +22,10 @@ export const getReviewsCountAsync = createAsyncThunk(
         return await reviewService.getReviewCount(username);
     }
 );
+
+export const deleteReviewAsync = createAsyncThunk(
+    actionTypes.DEL_REVIEW,
+    async (id) => {
+        return await reviewService.deleteReview(id);
+    }
+);

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATE } from '../utils';
-import { createReviewAsync, getReviewsAsync, getReviewsCountAsync } from "./thunk";
+import { createReviewAsync, getReviewsAsync, getReviewsCountAsync, deleteReviewAsync } from "./thunk";
 
 const INITIAL_STATE = {
     list: [],
@@ -24,7 +24,7 @@ const servicesSlice = createSlice({
             .addCase(createReviewAsync.fulfilled, (state, action) => {
                 //console.log(action.payload)
                 state.createReview = REQUEST_STATE.FULFILLED;
-                state.reviewList.push(action.payload);
+                state.list.push(action.payload);
             })
             .addCase(createReviewAsync.rejected, (state, action) => {
                 state.createReview = REQUEST_STATE.REJECTED;
@@ -40,6 +40,17 @@ const servicesSlice = createSlice({
             })
             .addCase(getReviewsAsync.rejected, (state, action) => {
                 state.getReviews = REQUEST_STATE.REJECTED;
+                state.error = action.error;
+            })
+            .addCase(deleteReviewAsync.pending, (state) => {
+                state.deleteReview = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(deleteReviewAsync.fulfilled, (state, action) => {
+                state.deleteReview = REQUEST_STATE.FULFILLED;
+            })
+            .addCase(deleteReviewAsync.rejected, (state, action) => {
+                state.deleteReview = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             })
             .addCase(getReviewsCountAsync.pending, (state) => {
