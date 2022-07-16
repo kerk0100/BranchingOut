@@ -15,7 +15,7 @@ function CoffeeMap() {
 
     const dispatch = useDispatch();
     function makeReviewComponents(review) {
-      return <MapReviews key={review._id} cafeName={review.cafeName} reviews={review.reviews} hours={review.hours} address={review.address} image={review.image}/>;
+      return <MapReviews key={review._id} cafeName={review.name} hours={review.hours} address={review.address}/>;
     }
   
     let reviewList = useSelector((state) => state.mapReviews.list);
@@ -25,7 +25,14 @@ function CoffeeMap() {
           dispatch(getReviewsAsync());
         }, []);
     
-    console.log(reviewList);
+    function getLatLon(){
+        for (let i = 0; i < reviewList; i++){
+            const latlong =  i.address.split(",");
+            const latitude = latlong[0];
+            const longitude = latlong[1];
+            console.log(latitude);
+        }
+    }
 
     const startPosition = [49.266683211803446, -123.16634827187337]
     const enroute = [49.27141046145708, -123.15461071089254]
@@ -47,8 +54,8 @@ function CoffeeMap() {
           <Navbar />
           <div className="wrapper">
               <div className="reviews">
-                <div className="reviewBox">
-                    <ListFrame key="mapReview" elements={reviewListComponents} listName="mapReviewList" />
+                <div className="cafeList">
+                    <ListFrame className="cafeList" key="mapReview" elements={reviewListComponents} listName="cafeList" />
                 </div>
               </div>
               <div className='leaflet-container'>

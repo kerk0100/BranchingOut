@@ -15,7 +15,7 @@ router.get('/', async function(req, res, next) {
 
 /* POST reviews. */
 router.post('/', async function (req, res, next) {
-  const map = new Map({cafeName: req.body.cafeName, reviews: req.body.reviews, hours: req.body.hours, address: req.body.address, image: req.body.image});
+  const map = new Map({cafeName: req.body.cafeName, hours: req.body.hours, address: req.body.address});
   const addedReview = await queries.addOneMapReview(map);
   return res
       .setHeader('Content-Type', 'application/json')

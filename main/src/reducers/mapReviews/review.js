@@ -21,7 +21,6 @@ const getReviews = async () => {
       method: 'GET'
     });
     let res = await response.json();
-    console.log(res);
     return res;
   };
 

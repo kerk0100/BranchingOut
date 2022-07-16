@@ -8,9 +8,9 @@ export default function MapReviews(props) {
                 <b> {props.cafeName}</b>
                 </div>
                 <div className="cafeDescription">
-                    Reviews: {props.reviews}
-                    <br/>
                     Hours: {props.hours}
+                    <br/>
+                    Address: {props.address}
                 </div>
             </div>
         </div>

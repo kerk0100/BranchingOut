@@ -44,10 +44,8 @@ async function generateData() {
     // Create map reviews
     const mapReview1 = new Map({
         cafeName: "JJ Bean",
-        reviews: "Great coffee, nice chairs.",
         hours: "7am - 9pm",
-        address: "4593 W 7th Ave.",
-        image: "https://media.architecturaldigest.com/photos/5b083c4675a4f940de3da8f1/master/w_2580%2Cc_limit/case-study-coffee.jpg"
+        address: "4593 W 7th Ave."
     });
 
     // await user1.save();
@@ -55,7 +53,7 @@ async function generateData() {
     // await review1.save();
     // await review2.save();
     // await review3.save();
-    await mapReview1.save();
+    // await mapReview1.save();
 }
 
 module.exports = generateData;
