@@ -7,22 +7,29 @@ import Navbar from "../nav/Navbar";
 
 export default function ReviewForm(props) {
 
-    let sampleCoffeeShop = {name: "Sample",  image:"https://nomsmag.gumlet.io/wp-content/uploads/2021/09/best-burnaby-cafe-ki-cafe.jpg", hours:"Moki is cute"};
-
-    const [review, setValue] = useState({text: "enter review here!", author: "useState.getLoggedinUser", coffeeShop:{name: "name", image: "test", hours: "test"}});
+    const [coffeeShop, setCoffeeShopValue] = useState({name: "name", image: "test", hours: "test", address: "address"});
+    const [review, setValue] = useState({text: "enter review here!", author: "useState.getLoggedinUser", coffeeShop: coffeeShop});
     const dispatch = useDispatch();
 
     function handleSubmit(event) {
         //event.preventDefault();
-        setValue({review, 'coffeeShop': sampleCoffeeShop})
-        //console.log(review);
-        //testReview = review['coffeeShop'] = review;
+        setValue({review});  
+        //console.log(review); 
         dispatch(createReviewAsync(review));
+        alert("Review posted!")
     }
 
     function handleChange(event) {
         event.preventDefault();
-        setValue({...review, [event.target.name]: event.target.value})  
+        setValue({...review, [event.target.name]: event.target.value})
+    }
+
+    function handleChangeCoffeeShop(event) {
+        event.preventDefault();
+        let coffeeShop = review.coffeeShop;
+        coffeeShop[event.target.name] = event.target.value;
+        setCoffeeShopValue({...coffeeShop,[event.target.name]: event.target.value})
+        setValue({...review, coffeeShop: coffeeShop});
     }
 
     function handleClear(event) {
@@ -37,15 +44,34 @@ export default function ReviewForm(props) {
             <form id="reviewForm" onSubmit={handleSubmit} onReset={handleClear}>
                 <div className = "labelForm"> 
                     <input
-                        name="reviewText"
+                        id="inputReviewText"
+                        name="text"
                         type="textarea"
                         value={review.text}
-                        onChange= {e => handleChange(e)}
+                        onChange= {e => handleChange(e)}>
+                    </input>
+                    <div className = "coffeeShopSearchForm">
+                        <p>Cafe Name</p>
+                    <input
+                        id="inputCoffeeShopName"
+                        name="name"
+                        type="textarea"
+                        value= {coffeeShop.name}
+                        onChange= {e => handleChangeCoffeeShop(e)}> 
+                    </input>
+                    <p>Cafe Address</p>
+                    <input
+                        id="inputCoffeeShopAddress"
+                        name="address"
+                        type="textarea"
+                        value={coffeeShop.address}
+                        onChange= {e => handleChangeCoffeeShop(e)}
                     />
+                    </div>
                 </div>
                 <div className= "formButtons">
-                    <button type= "submit"> Submit</button>
-                    <button type= "reset"> Clear </button>
+                    <button id = "buttonForm" type= "submit"> Submit</button>
+                    <button id = "buttonForm" type= "reset"> Clear </button>
                 </div>
             </form>
         </div>
