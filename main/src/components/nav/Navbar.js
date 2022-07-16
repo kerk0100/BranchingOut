@@ -6,6 +6,7 @@ const Navbar = () => {
     const [feedActive, setFeedActive] = useState();
     const [mapActive, setMapActive] = useState();
     const [profileActive, setProfileActive] = useState();
+    const [reviewActive, setReviewActive] = useState();
     const user = localStorage.getItem("user");
 
     const setActive = () => {
@@ -13,6 +14,10 @@ const Navbar = () => {
             setFeedActive("active");
         } else if (window.location.href === "http://localhost:3000/CoffeeMap"){
             setMapActive("active");
+        }
+        else if (window.location.href === "http://localhost:3000/Review") {
+            setReviewActive("active")
+
         } else {
             setProfileActive("active");
         }
@@ -25,6 +30,7 @@ const Navbar = () => {
 
           <a className={feedActive} href="/Feed">Feed</a>
           <a className={mapActive} href="/CoffeeMap">Map</a>
+          <a className={reviewActive} href="/Review">Post a Review</a>
           <div className="topnav-right">
               <a className={profileActive} href="/Profile"><b>{user.toUpperCase()}</b></a>
           </div>
