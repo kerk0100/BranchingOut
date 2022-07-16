@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+// import React, {useState} from "react";
+import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './styles.css';
 import Navbar from "../nav/Navbar";
@@ -7,61 +8,54 @@ import L, { divIcon } from 'leaflet';
 import markerIcon from "../images/marker.png";
 import MapReviews from "../mapReviews/MapReviews.js";
 import ListFrame from "../list/ListFrame";
-import ReactDOM from 'react-dom/client';
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { getReviewsAsync } from "../../reducers/mapReviews/thunk";
 
 function CoffeeMap() {
+
+    const dispatch = useDispatch();
+    function makeReviewComponents(review) {
+      return <MapReviews key={review._id} cafeName={review.name} hours={review.hours} address={review.address}/>;
+    }
+  
+    let reviewList = useSelector((state) => state.mapReviews.list);
+    let reviewListComponents = reviewList.map(element => makeReviewComponents(element));
+  
+      useEffect(() => {
+          dispatch(getReviewsAsync());
+        }, []);
+    
+    function getLatLon(){
+        for (let i = 0; i < reviewList; i++){
+            const latlong =  i.address.split(",");
+            const latitude = latlong[0];
+            const longitude = latlong[1];
+            console.log(latitude);
+        }
+    }
+
     const startPosition = [49.266683211803446, -123.16634827187337]
     const enroute = [49.27141046145708, -123.15461071089254]
     const breka = [49.268639392128684, -123.18674248681495]
     const beyondBread = [49.26868139635726, -123.18516534787199]
     const jjBean = [49.26468383359408, -123.16939830733237]
 
-const markerIconConst = L.icon({
-    iconUrl: markerIcon,
-    iconRetinaUrl: markerIcon,
-    iconSize: [30, 40],
-    iconAnchor: [5, 40],
-    popupAnchor: [10, -44],
-    html: `<span style="background-color:rgb(175, 121, 49)" />`
-});
-
-let sampleCafe1 = <MapReviews name="J.J. Bean" description="Just a J and his beans"/>
-let sampleCafe2 = <MapReviews name="Enroute Cafe" description="Best Coffee in Town"/>
-let sampleCafe3 = <MapReviews name="Breka Bakery" description="Open 24 hrs!"/>
-let sampleCafe4 = <MapReviews name="Beyond Bread" description="We sell bread and beyond"/>
-
-var sampleCafes = [sampleCafe1, sampleCafe2, sampleCafe3, sampleCafe4]
-
-const [cafe, setCafe] = useState("");
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  alert(`The cafe you searched for was: ${cafe}`);
-  setCafe("");
-}
+    const markerIconConst = L.icon({
+        iconUrl: markerIcon,
+        iconRetinaUrl: markerIcon,
+        iconSize: [30, 40],
+        iconAnchor: [5, 40],
+        popupAnchor: [10, -44],
+        html: `<span style="background-color:rgb(175, 121, 49)" />`
+    });
 
   return (
       <div>
           <Navbar />
           <div className="wrapper">
               <div className="reviews">
-                <div className="reviewBox">
-                    <div className="search">
-                    <form onSubmit={handleSubmit}>
-                        <label>Search:
-                            <input 
-                            type="text" 
-                            value={cafe}
-                            onChange={(e) => setCafe(e.target.value)}
-                            />
-                        </label>
-                        <input type="submit" />
-                    </form>
-                    </div>
-                  
-                    <ListFrame elements={sampleCafes} listName="cafeList" header="Coffee nearby..."/>
+                <div className="cafeList">
+                    <ListFrame className="cafeList" key="mapReview" elements={reviewListComponents} listName="cafeList" />
                 </div>
               </div>
               <div className='leaflet-container'>

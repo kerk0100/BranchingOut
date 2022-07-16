@@ -7,6 +7,7 @@
 
 .mapReview{
     display: flex;
+    list-style: none;
     flex-direction: row;
     width: 95%;
     max-height: 40vh;

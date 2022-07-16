@@ -1,5 +1,6 @@
 const User = require('./models/userModel');
 const Review = require('./models/reviewModel');
+const Map = require('./models/mapModel');
 
 async function generateData() {
     // create users
@@ -30,7 +31,7 @@ async function generateData() {
             image:"https://media.architecturaldigest.com/photos/625c34a97f06d08d30106ba7/master/w_2580%2Cc_limit/IMG_3133.jpg",
             hours:"6am-4pm Monday-Friday"
         }
-    })
+    });
     const review3 = new Review({
         text:"Coffee was great, vegan wraps were not",
         author:"Lauren,",
@@ -40,12 +41,19 @@ async function generateData() {
             hours:"5am - 1pm Monday-Thursday"
         }
     });
+    // Create map reviews
+    const mapReview1 = new Map({
+        cafeName: "JJ Bean",
+        hours: "7am - 9pm",
+        address: "4593 W 7th Ave."
+    });
 
-    await user1.save();
-    await user2.save();
-    await review1.save();
-    await review2.save();
-    await review3.save();
+    // await user1.save();
+    // await user2.save();
+    // await review1.save();
+    // await review2.save();
+    // await review3.save();
+    // await mapReview1.save();
 }
 
 module.exports = generateData;
