@@ -25,7 +25,18 @@ const getReviews = async () => {
     return res;
   };
 
+
+const deleteReview = async (id) => {
+  console.log(id);
+    const response = await fetch('http://localhost:3001/reviews/' + id, {
+      method: 'DELETE'
+    });
+    let res = await response.json();
+    return res;
+  };
+
 export default {
    createReview,
-   getReviews
+   getReviews,
+   deleteReview
 };
