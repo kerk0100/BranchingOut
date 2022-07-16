@@ -5,8 +5,8 @@ export default function CoffeeShop(props) {
         <div className="coffeeShop">
                 <img src={props.image}/>
                 <div className="overlay">
-                    <div class="coffeeShopName"> {props.name}</div>
-                    <div class="coffeeShopHours"> {props.hours}</div>
+                    <div className="coffeeShopName"> {props.name}</div>
+                    <div className="coffeeShopHours"> {props.hours}</div>
             </div>
         </div>
     );

@@ -1,0 +1,19 @@
+h2 {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#createBtn {
+    border-radius: 8px;
+    margin: 10px;
+    background: white;
+    border: 2px solid black;
+
+}
+
+.createA {
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+}

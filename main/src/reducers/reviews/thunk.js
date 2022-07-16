@@ -3,9 +3,9 @@ import { actionTypes } from './actionTypes';
 import reviewService from './review';
 
 export const createReviewAsync = createAsyncThunk(
-    actionTypes.CREATE_REVIEW,
+    actionTypes.ADD_REVIEW,
     async (review) => {
-        return await reviewService.createReview();
+        return await reviewService.createReview(review);
     }
 );
 
