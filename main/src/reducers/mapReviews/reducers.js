@@ -21,7 +21,7 @@ const servicesSlice = createSlice({
             })
             .addCase(createReviewAsync.fulfilled, (state, action) => {
                 state.createReview = REQUEST_STATE.FULFILLED;
-                state.reviewList.push(action.payload);
+                state.list.push(action.payload);
             })
             .addCase(createReviewAsync.rejected, (state, action) => {
                 state.createReview = REQUEST_STATE.REJECTED;

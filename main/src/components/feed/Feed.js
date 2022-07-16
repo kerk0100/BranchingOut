@@ -14,7 +14,7 @@ function Feed() {
    const dispatch = useDispatch();
   function makeReviewComponents(review) {
     let coffeeShopComponent = <CoffeeShop name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>;
-    return <Review key={review._id} text={review.text} author={review.author} coffeeShop={coffeeShopComponent}/>;
+    return <Review key={review.id} id={review.id} text={review.text} author={review.author} coffeeShop={coffeeShopComponent}/>;
   }
 
   let reviewList = useSelector((state) => state.reviews.list);

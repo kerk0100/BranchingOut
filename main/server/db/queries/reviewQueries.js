@@ -13,6 +13,10 @@ const reviewQueries = {
         const review = await Review.updateOne(filter, set);
         return review;
     },
+    deleteOneReview: async function (filter) {
+        const review = await Review.deleteOne(filter);
+        return review;
+    }
 }
 
 

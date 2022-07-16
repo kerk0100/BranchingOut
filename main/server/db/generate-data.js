@@ -1,6 +1,7 @@
 const User = require('./models/userModel');
 const Review = require('./models/reviewModel');
 const Map = require('./models/mapModel');
+const { v4: uuid } = require('uuid');
 
 async function generateData() {
     // create users
@@ -15,6 +16,7 @@ async function generateData() {
 
     // create reviews
     const review1 = new Review({
+        id: uuid(),
         text: "This coffee shop was only okay, they didn't have everything bagels.",
         author: "Amy",
         coffeeShop: {
@@ -24,6 +26,7 @@ async function generateData() {
         }
     });
     const review2 = new Review({
+        id: uuid(),
         text:"This place was the worst. Coffee was $7 and they didn't even have any to-go cups. They poured the coffee directly in my hands to slurp up on my way to work.",
         author:"Ben",
         coffeeShop:{
@@ -33,6 +36,7 @@ async function generateData() {
         }
     });
     const review3 = new Review({
+        id: uuid(),
         text:"Coffee was great, vegan wraps were not",
         author:"Lauren,",
         coffeeShop:{
@@ -48,12 +52,12 @@ async function generateData() {
         address: "4593 W 7th Ave."
     });
 
-    // await user1.save();
-    // await user2.save();
-    // await review1.save();
-    // await review2.save();
-    // await review3.save();
-    // await mapReview1.save();
+    //await user1.save();
+    //await user2.save();
+    await review1.save();
+    await review2.save();
+    await review3.save();
+   //await mapReview1.save();
 }
 
 module.exports = generateData;
