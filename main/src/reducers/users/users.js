@@ -5,6 +5,13 @@ const getUsers = async () => {
     return response.json();
 };
 
+const checkUser = async (username, password) => {
+    const response = await fetch('http://localhost:3001/login/auth/'+username +"/"+ password, {
+        method: 'GET'
+    });
+    return response.json();
+};
+
 
 const loginUser = async (userName, password) => {
 
@@ -34,6 +41,7 @@ const getFriends = async () => {
 
 export default {
     getUsers,
+    checkUser,
     loginUser,
     getFriends
 };

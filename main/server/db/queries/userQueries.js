@@ -5,6 +5,10 @@ const userQueries = {
         const users = await User.find(filter);
         return users;
     },
+    getUser: async function (filter) {
+        const user = await User.findOne(filter);
+        return user;
+    },
     addOneUser: async function (document) {
         const user = await User.create(document);
         return user;
