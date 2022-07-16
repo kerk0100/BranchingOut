@@ -16,6 +16,13 @@ export const checkUserAsync = createAsyncThunk(
     }
 );
 
+export const checkUserNameFreeAsync = createAsyncThunk(
+    actionTypes.CHECK_USERNAME_TAKEN,
+    async (userName) => {
+        return await UserService.checkUsernameTaken(userName);
+    }
+);
+
 export const getFriendsAsync = createAsyncThunk(
     actionTypes.GET_FRIENDS,
     async (username) => {

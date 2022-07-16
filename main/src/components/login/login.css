@@ -52,6 +52,11 @@ label {
     background: #C1EAB1;
 }
 
+#invalidUser {
+    color: red;
+    font-weight: bold;
+}
+
 
 
 

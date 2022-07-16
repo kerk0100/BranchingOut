@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Login() {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
+    const [invalidUser, setInvalidUSer] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -16,13 +17,21 @@ export default function Login() {
         if (e.keyCode === 13 || e.key === "Enter") {
             document.getElementById("loginBtn").click();
             e.preventDefault();
-            window.location.href="/Feed";
         }
     };
 
-    const handleSubmit = e => {
-        dispatch(checkUserAsync([username, password]));
-        localStorage.setItem("username", username);
+    async function handleSubmit(e) {
+        const test = await dispatch(checkUserAsync([username, password]));
+        if (test.payload.message === "User not found") {
+            setInvalidUSer(true);
+            e.preventDefault();
+        } else {
+            setInvalidUSer(false);
+            localStorage.setItem("username", username);
+            console.log('DB document returned: ', test.payload);
+            localStorage.setItem("friendsCount", test.payload.friends.length)
+            window.location.href="/Feed";
+        }
     }
 
     return (
@@ -43,9 +52,9 @@ export default function Login() {
                                 <input type="password" placeholder="Enter Password" id="psw" required onChange={e => setPassword(e.target.value)} onKeyPress={handleKeypress}/>
                                 <br/>
                             </div>
-                            <br/>
+                            {invalidUser && <div className="row-login"><span id="invalidUser">Invalid username and/or password!</span></div>}
                             <div className="row-login">
-                                <button className="loginBtn" id="loginBtn" type="submit" onClick={handleSubmit}><a className="createA" href="/Feed">Login</a></button>
+                                <button className="loginBtn" id="loginBtn" type="button" onClick={handleSubmit}>Login</button>
                             </div>
                             <div className="row-login">
                                 <span className="psw">Don't have an account? <a className="createA" href="/SignUp">Sign Up</a></span>
@@ -58,3 +67,4 @@ export default function Login() {
                 </div>
         </div>);
 }
+
