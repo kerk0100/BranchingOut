@@ -9,6 +9,13 @@ export const loginUserAsync = createAsyncThunk(
     }
 );
 
+export const checkUserAsync = createAsyncThunk(
+    actionTypes.CHECK_USER,
+    async ([userName, password]) => {
+        return await UserService.checkUser(userName, password);
+    }
+);
+
 export const getFriendsAsync = createAsyncThunk(
     actionTypes.GET_FRIENDS,
     async () => {

@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 export default function SignUp() {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
-    const [currentUser, setUser] = useState();
 
     const dispatch = useDispatch();
 
@@ -21,9 +20,8 @@ export default function SignUp() {
     };
 
     const handleSubmit = e => {
-        setUser({username});
-        console.log('currentUser ' + currentUser);
         dispatch(loginUserAsync([username, password]));
+        localStorage.setItem("user", username);
     }
 
     return (

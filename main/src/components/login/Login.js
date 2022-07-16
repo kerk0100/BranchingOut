@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import './login.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import coffee from "../nav/coffee.png";
-import { loginUserAsync } from "../../reducers/users/thunk";
+import { checkUserAsync } from "../../reducers/users/thunk";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Login() {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
-    const [currentUser, setUser] = useState();
 
     const dispatch = useDispatch();
 
@@ -22,10 +21,8 @@ export default function Login() {
     };
 
     const handleSubmit = e => {
-        setUser({username});
+        dispatch(checkUserAsync([username, password]));
         localStorage.setItem("user", username);
-        console.log('currentUser ' + currentUser);
-        dispatch(loginUserAsync([username, password]));
     }
 
     return (
