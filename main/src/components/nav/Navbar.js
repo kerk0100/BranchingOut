@@ -7,7 +7,7 @@ const Navbar = () => {
     const [mapActive, setMapActive] = useState();
     const [profileActive, setProfileActive] = useState();
     const [reviewActive, setReviewActive] = useState();
-    const user = localStorage.getItem("user");
+    const username = localStorage.getItem("username");
 
     const setActive = () => {
         if (window.location.href === "http://localhost:3000/Feed") {
@@ -32,7 +32,7 @@ const Navbar = () => {
           <a className={mapActive} href="/CoffeeMap">Map</a>
           <a className={reviewActive} href="/Review">Post a Review</a>
           <div className="topnav-right">
-              <a className={profileActive} href="/Profile"><b>{user.toUpperCase()}</b></a>
+              <a className={profileActive} href="/Profile"><b>{username.toUpperCase()}</b></a>
           </div>
       </div>)
 };
