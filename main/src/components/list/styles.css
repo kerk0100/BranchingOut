@@ -1,7 +1,7 @@
 .reviewList {
     list-style: none;
     margin: auto;
-    width:70%;
+    width:80%;
     float: left;
     min-height: 150vh;
     background-color: #faebd7;
@@ -15,9 +15,10 @@
     margin: auto;
     list-style: none;
     min-height: 150vh;
-    width:30%;
-    float: left;
+    width:20%;
+    float: right;
     background-color: #faebd7;
+    /* position: fixed; */
 }
 
 .listHeader {

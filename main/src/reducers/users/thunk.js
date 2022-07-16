@@ -18,7 +18,7 @@ export const checkUserAsync = createAsyncThunk(
 
 export const getFriendsAsync = createAsyncThunk(
     actionTypes.GET_FRIENDS,
-    async () => {
-        return await UserService.getFriends();
+    async (username) => {
+        return await UserService.getFriends(username);
     }
 );

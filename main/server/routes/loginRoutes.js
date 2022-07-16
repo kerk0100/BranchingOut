@@ -21,7 +21,7 @@ router.get('/auth/:username/:password', async function (req, res, next) {
 });
 
 router.post('/', async function (req, res, next) {
-  const user = { username: req.body[0], password: req.body[1] };
+  const user = { username: req.body[0], password: req.body[1], friends: []};
   //users.push(user);
   const addedUser = await queries.addOneUser(user)
 

@@ -1,3 +1,19 @@
 .body {
    background-color: #faebd7;
 }
+
+.addFriendbutton {
+   height: 34px;
+   width: 33px;
+   margin-left: 15px;
+ }
+
+ .fListHeader{
+   float: left;
+   text-align: center;
+   background-color: #faebd7;
+   font-size: 28px;
+   width: auto;
+   margin: auto;
+   
+}
