@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import serviceReducer from './services/reducers';
+import serviceReducer from './users/reducers';
 import reviewReducer from './reviews/reducers';
 import mapReviewReducer from './mapReviews/reducers';
 
