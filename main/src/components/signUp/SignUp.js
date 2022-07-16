@@ -21,7 +21,7 @@ export default function SignUp() {
 
     const handleSubmit = e => {
         dispatch(loginUserAsync([username, password]));
-        localStorage.setItem("user", username);
+        localStorage.setItem("username", username);
     }
 
     return (

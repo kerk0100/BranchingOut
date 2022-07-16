@@ -22,7 +22,7 @@ export default function Login() {
 
     const handleSubmit = e => {
         dispatch(checkUserAsync([username, password]));
-        localStorage.setItem("user", username);
+        localStorage.setItem("username", username);
     }
 
     return (
