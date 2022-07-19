@@ -5,8 +5,9 @@ const Review = require('../db/models/reviewModel');
 
 /* GET reviews. */
 router.get('/', async function(req, res, next) {
-  const reviews = await queries.getAllReviews({});
-
+  console.log(req.body)
+  const reviews = await queries.getAllReviews({find: req.body});
+  //console.log(reviews);
   res.send(reviews);
 });
 

@@ -8,7 +8,9 @@ const generateData = require('../db/generate-data');
 /* GET reviews. */
 router.get('/', async function(req, res, next) {
   // await generateData();
-  const mapReviews = await queries.getAllMapReviews({});
+  console.log("here")
+  console.log(req.body)
+  const mapReviews = await queries.getAllMapReviews(req.body);
   res.send(mapReviews);
 });
 
