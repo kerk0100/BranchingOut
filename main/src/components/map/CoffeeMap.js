@@ -31,6 +31,7 @@ function CoffeeMap() {
           dispatch(getReviewsAsync());
         }, []);
 
+
     const startPosition = [49.286177, -123.126971]
 
     const markerIconConst = L.icon({
@@ -57,12 +58,7 @@ function CoffeeMap() {
                           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                       />
-                            <MarkerList elements={coordinate_list} markerIcon={markerIconConst}/>
-                            {/* <Marker icon={markerIconConst} position={enroute}>
-                            <Popup>
-                                Enroute Cafe <br /> Best Coffee in Town
-                            </Popup>
-                            </Marker> */}
+                            <MarkerList elements={reviewList} markerIcon={markerIconConst} />
                   </MapContainer>
               </div>
           </div>
