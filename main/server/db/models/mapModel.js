@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const mapSchema = new mongoose.Schema({
     cafeName: String,
     hours: String,
-    address: String
+    address: String,
+    coordinates: [String]
 }, { versionKey: false });
 
 // create model

@@ -54,9 +54,9 @@ async function generateData() {
 
     //await user1.save();
     //await user2.save();
-    await review1.save();
-    await review2.save();
-    await review3.save();
+    // await review1.save();
+    // await review2.save();
+    // await review3.save();
    //await mapReview1.save();
 }
 
