@@ -16,11 +16,14 @@ const createReview = async (review) => {
     return data;
 };
 
-const getReviews = async () => {
+const getReviews = async (filter) => {
     const response = await fetch('http://localhost:3001/mapReviews', {
-      method: 'GET'
+      method: 'GET', 
+      body: filter
     });
+
     let res = await response.json();
+    console.log(res)
     return res;
   };
 

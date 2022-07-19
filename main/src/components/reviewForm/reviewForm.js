@@ -1,7 +1,8 @@
 import './styles.css';
 import React, { useState } from "react";
 import { createReviewAsync } from '../../reducers/reviews/thunk.js';
-import { useDispatch} from "react-redux";
+import { getReviewsAsync } from '../../reducers/mapReviews/thunk.js';
+import { useDispatch, useSelector} from "react-redux";
 import Navbar from "../nav/Navbar";
 const { v4: uuid } = require('uuid');
 
@@ -12,6 +13,7 @@ export default function ReviewForm(props) {
     const [coffeeShop, setCoffeeShopValue] = useState({name: "name", image: sampleURL, hours: "test", address: "address"});
     const [review, setValue] = useState({id: uuid(), text: "enter review here!", author: localStorage.getItem("username"), coffeeShop: coffeeShop});
     const dispatch = useDispatch();
+    let cafeList = useSelector((state) => state.mapReviews.list);
 
     function handleSubmit(event) {
         setValue({review});  
@@ -37,6 +39,16 @@ export default function ReviewForm(props) {
         setValue({text: " "})
     }
 
+    function searchCoffeeShops(event) {
+        event.preventDefault();
+        let filter = {name: coffeeShop.name}
+        console.log(filter)
+        dispatch(getReviewsAsync(filter))
+        console.log(cafeList)
+
+
+    }
+ 
     return (
         <>
         <Navbar />
@@ -67,6 +79,7 @@ export default function ReviewForm(props) {
                         value={coffeeShop.address}
                         onChange= {e => handleChangeCoffeeShop(e)}
                     />
+                    <button id = "buttonCoffeeShopSearch" onClick={searchCoffeeShops}> Search Cafes</button>
                     </div>
                 </div>
                 <div className= "formButtons">

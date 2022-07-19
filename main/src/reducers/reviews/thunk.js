@@ -11,8 +11,8 @@ export const createReviewAsync = createAsyncThunk(
 
 export const getReviewsAsync = createAsyncThunk(
     actionTypes.GET_REVIEWS,
-    async () => {
-        return await reviewService.getReviews();
+    async (filter) => {
+        return await reviewService.getReviews(filter);
     }
 );
 
