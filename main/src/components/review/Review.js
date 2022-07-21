@@ -8,6 +8,7 @@ export default function Review(props) {
 
     const [myReview, isVisible] = useState((props.author === localStorage.getItem('username')));
     const dispatch = useDispatch();
+    
 
     function handleDelete(e) {
         console.log(props)

@@ -1,9 +1,10 @@
 import './styles.css';
-import React, { useState } from "react";
-import { createReviewAsync } from '../../reducers/reviews/thunk.js';
-import { getReviewsAsync } from '../../reducers/mapReviews/thunk.js';
+import React, { useState, useEffect } from "react";
+import { createReviewAsync} from '../../reducers/reviews/thunk.js';
+import { getCafeByNameAsync } from '../../reducers/mapReviews/thunk.js';
 import { useDispatch, useSelector} from "react-redux";
 import Navbar from "../nav/Navbar";
+import ListFrame from "../list/ListFrame";
 const { v4: uuid } = require('uuid');
 
 
@@ -14,6 +15,13 @@ export default function ReviewForm(props) {
     const [review, setValue] = useState({id: uuid(), text: "enter review here!", author: localStorage.getItem("username"), coffeeShop: coffeeShop});
     const dispatch = useDispatch();
     let cafeList = useSelector((state) => state.mapReviews.list);
+    const [isVisible, setVisible] = useState(false);
+
+
+    // useEffect(() => {
+    //    console.log("tet")
+    //   }, []);
+    
 
     function handleSubmit(event) {
         setValue({review});  
@@ -42,9 +50,15 @@ export default function ReviewForm(props) {
     function searchCoffeeShops(event) {
         event.preventDefault();
         let filter = {name: coffeeShop.name}
-        console.log(filter)
-        dispatch(getReviewsAsync(filter))
-        console.log(cafeList)
+        dispatch(getCafeByNameAsync(filter))
+        setVisible(cafeList.length !== 0);
+    }
+
+    function renderOptions() {
+        let options = cafeList.map((cafe) => {
+            <option value={cafe.address}></option>
+        })
+        return options
 
 
     }
@@ -53,7 +67,7 @@ export default function ReviewForm(props) {
         <>
         <Navbar />
         <div className="reviewFormWrapper">
-            <form id="reviewForm" onSubmit={handleSubmit} onReset={handleClear}>
+            <form id="reviewForm"  onReset={handleClear}>
                 <div className = "labelForm"> 
                     <input
                         id="inputReviewText"
@@ -71,20 +85,24 @@ export default function ReviewForm(props) {
                         value= {coffeeShop.name}
                         onChange= {e => handleChangeCoffeeShop(e)}> 
                     </input>
-                    <p>Cafe Address</p>
-                    <input
+                    <button id = "buttonCoffeeShopSearch" onClick={searchCoffeeShops}> Search Cafes</button>
+                    {isVisible && <div>
+                        <select
                         id="inputCoffeeShopAddress"
                         name="address"
-                        type="textarea"
                         value={coffeeShop.address}
                         onChange= {e => handleChangeCoffeeShop(e)}
-                    />
-                    <button id = "buttonCoffeeShopSearch" onClick={searchCoffeeShops}> Search Cafes</button>
+                        >
+                        {cafeList.map((cafe) => (
+                            <option value={cafe.address}>{cafe.address}</option>)
+                        )}
+                        </select>
+                    </div>}
                     </div>
                 </div>
                 <div className= "formButtons">
-                    <button id = "buttonForm" type= "submit"> Submit</button>
-                    <button id = "buttonForm" type= "reset"> Clear </button>
+                    <button id = "buttonForm"  onClick={handleSubmit}> Submit</button>
+                    <button id = "buttonForm" onClick={handleClear} > Clear </button>
                 </div>
             </form>
         </div>

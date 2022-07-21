@@ -47,5 +47,5 @@ export default {
     createReview,
     getReviews,
     getReviewCount,
-   deleteReview
+    deleteReview
 };

@@ -2,7 +2,6 @@ const Map = require('../models/mapModel');
 
 const mapQueries = {
     getAllMapReviews: async function (filter) {
-        console.log(filter)
         const mapReviews = await Map.find(filter);
         return mapReviews;
     },
