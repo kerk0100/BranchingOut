@@ -8,7 +8,7 @@ import "./styles.css"
 import Navbar from "../nav/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsAsync } from "../../reducers/reviews/thunk";
-import { getFriendsAsync } from "../../reducers/users/thunk";
+import { addFriendAsync, getFriendsAsync } from "../../reducers/users/thunk";
 
 function Feed() {
    const dispatch = useDispatch();
@@ -31,6 +31,19 @@ function Feed() {
       dispatch(getFriendsAsync(localStorage.username));
     }, []);
 
+  async function handleAddFriend(e) {
+    e.preventDefault();
+    const placeholder = "Amy"
+    const addF = await dispatch(addFriendAsync([localStorage.username, placeholder]));
+    if (addF.payload.message === "Current user not found") {
+        window.alert("Current user not found")
+        e.preventDefault();
+    } else if (addF.payload.message === "Friend successfully added!") {
+      window.alert("Friend Added!")
+    } else {
+      window.alert("You're already friends with this person!")
+    }
+}
 
   const listItems = friendsList.map((friend) => <Friend name={friend.username}/>);
   
@@ -38,14 +51,17 @@ function Feed() {
         <div>
           <Navbar />
           <div className="body">
-            <ListFrame key="review" elements={reviewListComponents} listName="reviewList" />
-            <div className="fList">
-              <h1 className="fListHeader"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Friends List</h1>
+            <div className="feedReviews">
+              <ListFrame key="review" elements={reviewListComponents} listName="reviewList" />
             </div>
-            <div className="fList">
-              <input className="addFriendbutton" type="button" value="+"></input> 
+            <div className="feedFriends">
+              <div>
+                <h1 className="fListHeader">Friends</h1>
+              
+                <input className="button-21" onClick={handleAddFriend} value="+ Add Friend"></input>
               </div>
-            <ListFrame elements= {listItems} listName="friendList"/>
+                <ListFrame elements= {listItems} listName="friendList"/>
+            </div>
           </div>
         </div>
     );

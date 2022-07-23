@@ -45,10 +45,30 @@ const getFriends = async (username) => {
     return response.json();
 };
 
+const addFriend = async (user, newFriend) => {
+    const response = await fetch('http://localhost:3001/friends/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify([user, newFriend])
+    });
+
+    const data = await response.text();
+    console.log(data)
+    if (!response.ok) {
+        const tempVar = {message:"Not working"}
+        return tempVar
+    }
+    console.log(data)
+    return {data};
+};
+
 export default {
     getUsers,
     checkUser,
     checkUsernameTaken,
     loginUser,
-    getFriends
+    getFriends, 
+    addFriend
 };
