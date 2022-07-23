@@ -49,6 +49,7 @@ function Feed() {
 
   async function handleAddFriend(e) {
     e.preventDefault();
+<<<<<<< HEAD
     const addF = await dispatch(addFriendAsync([localStorage.username, addFriendInput.friendName]));
     var messageStr
     if (addF.payload.message === "User cannot be found :(") {
@@ -59,6 +60,18 @@ function Feed() {
       messageStr ="<b style='margin-left:25%;color:green;'>" + "Friend added!" + "</b></center>";
     }
     document.getElementById("friendMessage").innerHTML = messageStr;
+=======
+    const placeholder = "Amy"
+    const addF = await dispatch(addFriendAsync([localStorage.username, placeholder]));
+    if (addF.payload.message === "Current user not found") {
+        window.alert("Current user not found")
+        e.preventDefault();
+    } else if (addF.payload.message === "Friend successfully added!") {
+      window.alert("Friend Added!")
+    } else {
+      window.alert("You're already friends with this person!")
+    }
+>>>>>>> Trying to get my stuff working :(
 }
 
   const listItems = friendsList.map((friend) => <Friend name={friend.username}/>);
@@ -73,6 +86,7 @@ function Feed() {
             <div className="feedFriends">
               <div>
                 <h1 className="fListHeader">Friends</h1>
+<<<<<<< HEAD
                 <input 
                     id= "addFriendInput"
                     name= "friendName" 
@@ -85,6 +99,11 @@ function Feed() {
                 <input className="button-21" onClick={handleAddFriend} value="+"></input>
               </div>
               <div id="friendMessage"/>
+=======
+              
+                <input className="button-21" onClick={handleAddFriend} value="+ Add Friend"></input>
+              </div>
+>>>>>>> Trying to get my stuff working :(
                 <ListFrame elements= {listItems} listName="friendList"/>
             </div>
           </div>

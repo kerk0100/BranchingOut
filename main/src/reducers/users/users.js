@@ -46,7 +46,11 @@ const getFriends = async (username) => {
 };
 
 const addFriend = async (user, newFriend) => {
+<<<<<<< HEAD
     const response = await fetch('http://localhost:3001/friends', {
+=======
+    const response = await fetch('http://localhost:3001/friends/add', {
+>>>>>>> Trying to get my stuff working :(
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -54,6 +58,7 @@ const addFriend = async (user, newFriend) => {
         body: JSON.stringify([user, newFriend])
     });
 
+<<<<<<< HEAD
     if (response.status == 404) {
         return {message:"User cannot be found :("}
     } else if (response.status == 405){
@@ -61,6 +66,16 @@ const addFriend = async (user, newFriend) => {
     }else {
         return {message:"Friend added!"}
     }
+=======
+    const data = await response.text();
+    console.log(data)
+    if (!response.ok) {
+        const tempVar = {message:"Not working"}
+        return tempVar
+    }
+    console.log(data)
+    return {data};
+>>>>>>> Trying to get my stuff working :(
 };
 
 export default {
