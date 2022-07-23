@@ -1,7 +1,7 @@
 .reviewList {
     list-style: none;
     margin: auto;
-    width:80%;
+    /* width:80%; */
     float: left;
     min-height: 150vh;
     background-color: #faebd7;
@@ -12,11 +12,12 @@
 }
 
 .friendList {
-    margin: auto;
+    /* margin: auto; */
     list-style: none;
     min-height: 150vh;
-    width:20%;
-    float: right;
+    /* width:20%; */
+    width: 100%;
+    float: left;
     background-color: #faebd7;
     /* position: fixed; */
 }
