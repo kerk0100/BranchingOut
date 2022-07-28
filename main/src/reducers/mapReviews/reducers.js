@@ -45,9 +45,7 @@ const servicesSlice = createSlice({
             })
             .addCase(getCafeByNameAsync.fulfilled, (state, action) => {
                 state.getReviews = REQUEST_STATE.FULFILLED;
-                console.log(action.payload)
                 state.list = action.payload;
-                console.log(state.list)
             })
             .addCase(getCafeByNameAsync.rejected, (state, action) => {
                 state.getReviews = REQUEST_STATE.REJECTED;
