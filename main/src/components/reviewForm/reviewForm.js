@@ -14,7 +14,7 @@ export default function ReviewForm(props) {
 
     let sampleURL = "https://cdn.vox-cdn.com/thumbor/UQzcVy9Zwif_Kku9OP_xIH1MVeU=/0x0:1600x1067/1820x1213/filters:focal(672x406:928x662):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/71121846/52002370644_28ad527f48_h.0.jpg"
     const [coffeeShop, setCoffeeShopValue] = useState({name: "name", image: sampleURL, hours: "test", address: "address"});
-    const [review, setValue] = useState({id: uuid(), text: "enter review here!", author: localStorage.getItem("username"), coffeeShop: coffeeShop});
+    const [review, setValue] = useState({id: uuid(), text: " ", author: localStorage.getItem("username"), coffeeShop: coffeeShop});
     const dispatch = useDispatch();
     let cafeList = useSelector((state) => state.mapReviews.list);
     const everyCafe = cafeList;
