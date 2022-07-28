@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // create schema
 const mapSchema = new mongoose.Schema({
-    cafeName: String,
+    name: String,
     hours: String,
     address: String,
     coordinates: [String]
