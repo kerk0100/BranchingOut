@@ -5,9 +5,15 @@ import ListFrame from "../list/ListFrame";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewsAsync } from "../../reducers/mapReviews/thunk";
 import React, { useEffect } from 'react';
+import PopUp from "../popup/popUp";
 
 function SeeReviews(element){
     console.log(element);
+    <PopUp
+    content={<>
+        <h2>Hello</h2><br></br>
+    </>}
+    />
     // const dispatch = useDispatch();
 
     // function makeReviewComponents(review) {

@@ -49,11 +49,11 @@ function CoffeeMap() {
       <div>
           <Navbar />
           <div className="wrapper">
-              <div className="reviews">
+              {/* <div className="reviews">
                 <div className="cafeList">
                     <ListFrame className="cafeList" key="mapReview" elements={reviewListComponents} listName="cafeList" />
                 </div>
-              </div>
+              </div> */}
               <div className='leaflet-container'>
                   <MapContainer center={startPosition} zoom={14}scrollWheelZoom={true} >
                       <TileLayer
