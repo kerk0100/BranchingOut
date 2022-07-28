@@ -8,7 +8,6 @@ export default function Friend(props) {
                     <b> {props.name}</b>
                 </div>
                 <div className="friendInfo">
-                    <input className='friendButton' type="button" value="Info"></input>
                 </div>
             </div>
         </div>

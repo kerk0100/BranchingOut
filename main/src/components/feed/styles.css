@@ -68,8 +68,8 @@
   touch-action: manipulation;
   vertical-align: top;
   white-space: nowrap;
-  width: 40%;
-  margin-left: 27%;
+  width: 15%;
+  margin-top: 8px;
 }
 
 .button-21:active,
@@ -83,4 +83,29 @@
 
 .button-21:focus:not(:active) {
   box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}
+
+.addFriendInput {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.4s ease-in-out;
+  margin-left: 10%;
+  width: 60%;
+  text-align: center;
+}
+
+/* .addFriendInput:focus{
+  width: 80%;
+} */
+
+.friendMessage{
+  width: 100%;
+  margin-left: 15%;
 }
