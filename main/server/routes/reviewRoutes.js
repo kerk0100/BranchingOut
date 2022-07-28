@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const queries = require('../db/queries/reviewQueries');
+const mapQueries = require('../db/queries/mapQueries');
 const Review = require('../db/models/reviewModel');
 
 /* GET reviews. */
@@ -32,6 +33,9 @@ router.post('/', async function (req, res, next) {
   const coffeeShop = {name: req.body.coffeeShop.name, image:req.body.coffeeShop.image, hours: req.body.coffeeShop.hours}
   const review = new Review({id: req.body.id, text: req.body.text, author: req.body.author, coffeeShop: coffeeShop});
   const addedReview = await queries.addOneReview(review);
+  await mapQueries.updateOneMapReview(
+    {"name": req.body.coffeeShop.name, "address": req.body.coffeeShop.address}, { $push: {reviews: req.body.id}}
+    );
   return res.send(addedReview);
 });
 
