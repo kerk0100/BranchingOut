@@ -16,15 +16,27 @@ const createReview = async (review) => {
     return data;
 };
 
-const getReviews = async () => {
+const getReviews = async (filter) => {
     const response = await fetch('http://localhost:3001/mapReviews', {
       method: 'GET'
     });
+
     let res = await response.json();
     return res;
   };
 
+const getFilteredCafes = async (filter) => {
+    console.log(filter)
+    const response = await fetch('http://localhost:3001/mapReviews/' + filter.name, {
+    method: 'GET'
+    });
+
+    let res = await response.json();
+    return res;
+};
+
 export default {
    createReview,
-   getReviews
+   getReviews, 
+   getFilteredCafes
 };

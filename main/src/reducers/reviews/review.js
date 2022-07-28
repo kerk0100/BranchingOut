@@ -17,9 +17,10 @@ const createReview = async (review) => {
     return data;
 };
 
-const getReviews = async () => {
+const getReviews = async (filter) => {
     const response = await fetch('http://localhost:3001/reviews', {
-      method: 'GET'
+      method: 'GET', 
+      body: JSON.stringify(filter)
     });
     let res = await response.json();
     return res;
@@ -46,5 +47,5 @@ export default {
     createReview,
     getReviews,
     getReviewCount,
-   deleteReview
+    deleteReview
 };
