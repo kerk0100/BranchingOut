@@ -18,3 +18,28 @@
     border-radius: 10px;
     border: 10px solid #DC9287;
 }
+
+.profileBox {
+    background-color: #faebd7;
+    width: 300px;
+    padding: 50px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+ol {
+    list-style-type: none;
+    /*padding-left: 0px;*/
+}
+
+#reviews:hover {
+    color: #C1EAB1;
+}
+
+#friends:hover {
+    color: #C1EAB1;
+}
+
+h2 {
+    margin-bottom: 0px;
+}
