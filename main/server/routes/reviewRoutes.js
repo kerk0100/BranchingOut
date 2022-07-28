@@ -10,6 +10,15 @@ router.get('/', async function(req, res, next) {
   res.send(reviews);
 });
 
+/* GET a user's reviews. */
+router.get('/:username', async function(req, res, next) {
+  const reviews = await queries.getAllReviews({author: req.params.username});
+  if (!reviews) return res.status(404).send({ message: 'No reviews found' });
+
+  res.send(reviews);
+});
+
+/* GET user review count. */
 router.get('/count/:username', async function(req, res, next) {
   const reviews = await queries.countReviews({author: req.params.username});
   if (!reviews) return res.status(404).send({ message: 'No reviews found' });
