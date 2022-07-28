@@ -64,12 +64,16 @@ const addFriend = async (user, newFriend) => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Functional add friend button
     if (response.status == 404) {
         return {message:"User cannot be found :("}
     } else if (response.status == 405){
         return {message:"User is already your friend :)"}
     }else {
         return {message:"Friend added!"}
+<<<<<<< HEAD
     }
 =======
     const data = await response.text();
@@ -84,6 +88,9 @@ const addFriend = async (user, newFriend) => {
     console.log(data)
     return {data};
 >>>>>>> Trying to get my stuff working :(
+=======
+    }
+>>>>>>> Functional add friend button
 };
 
 export default {
