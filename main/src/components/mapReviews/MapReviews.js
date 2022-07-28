@@ -7,6 +7,12 @@ export default function MapReviews(props) {
                 <div className="cafeName">
                 <b> {props.cafeName}</b>
                 </div>
+                {/* <div className="reviewText">
+                    {props.text}
+                </div>
+                <div className="reviewAuthor">
+                    Submitted by: {props.author}
+                </div> */}
                 <div className="cafeDescription">
                     Hours: {props.hours}
                     <br/>

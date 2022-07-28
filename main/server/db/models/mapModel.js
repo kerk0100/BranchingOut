@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 const mapSchema = new mongoose.Schema({
     name: String,
     hours: String,
-    address: String
+    address: String,
+    coordinates: [String],
+    reviews: [String]
 }, { versionKey: false });
 
 // create model
