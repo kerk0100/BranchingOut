@@ -46,7 +46,7 @@ const getFriends = async (username) => {
 };
 
 const addFriend = async (user, newFriend) => {
-    const response = await fetch('http://localhost:3001/friends/add', {
+    const response = await fetch('http://localhost:3001/friends', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ const addFriend = async (user, newFriend) => {
         body: JSON.stringify([user, newFriend])
     });
 
-    const data = await response.text();
+    const data = await response.json();
     console.log(data)
     if (!response.ok) {
         const tempVar = {message:"Not working"}
