@@ -33,7 +33,7 @@ function Feed() {
 
 
   const listItems = friendsList.map((friend) => <Friend name={friend.username}/>);
-  
+  console.log(reviewListComponents);
     return (
         <div>
           <Navbar />

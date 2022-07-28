@@ -25,8 +25,16 @@ const getReviews = async () => {
     return res;
   };
 
+const getUserReviews = async (username) => {
+    const response = await fetch('http://localhost:3001/reviews/'+ username, {
+        method: 'GET'
+    });
+    let res = await response.json();
+    return res;
+};
+
 const getReviewCount = async (username) => {
-    const response = await fetch('http://localhost:3001/reviews/count/'+username, {
+    const response = await fetch('http://localhost:3001/reviews/count/'+ username, {
         method: 'GET'
     });
     return response.json();
@@ -46,5 +54,6 @@ export default {
     createReview,
     getReviews,
     getReviewCount,
-   deleteReview
+    deleteReview,
+    getUserReviews
 };
