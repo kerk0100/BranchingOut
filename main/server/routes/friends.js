@@ -17,7 +17,7 @@ router.get('/:username', async function(req, res, next) {
     res.send(friends);
 });
 
-router.get('/add/', async function(req, res, next) {
+router.post('/', async function(req, res, next) {
     const user = await queries.getUser({username: req.body[0]});
     const allUsers = await queries.getAllUsers({});
     const newFriend = req.body[1];
