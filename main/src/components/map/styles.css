@@ -4,7 +4,7 @@
    
 .reviews {
     background: var(--background-color);
-    flex-basis: 150vh;
+    flex-basis: 25vh;
     margin: 10px;
 }
 
@@ -19,6 +19,12 @@
 .search {
     text-align: center;
     margin-left: 10px;
+}
+
+.scrollBar {
+    height:120px;
+    overflow:scroll;
+    overflow-x:hidden;
 }
 
 :root {

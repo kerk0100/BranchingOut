@@ -3,40 +3,40 @@ import {Marker, Popup} from 'react-leaflet';
 import MapReviews from "../mapReviews/MapReviews.js";
 import ListFrame from "../list/ListFrame";
 import { useDispatch, useSelector } from "react-redux";
-import { getReviewsAsync } from "../../reducers/mapReviews/thunk";
-import React, { useEffect } from 'react';
-import PopUp from "../popup/popUp";
+import {getUserReviewsAsync} from "../../reducers/reviews/thunk";
+import React, {useEffect, useState} from "react";
+import CoffeeShop from "../coffeeShop/CoffeeShop";
+import Review from "../review/Review";
 
-function SeeReviews(element){
-    console.log(element);
-    <PopUp
-    content={<>
-        <h2>Hello</h2><br></br>
-    </>}
-    />
-    // const dispatch = useDispatch();
-
-    // function makeReviewComponents(review) {
-    //   return <MapReviews key={review._id} cafeName={review.name} hours={review.hours} address={review.address}/>;
-    // }
-
-    // let reviewList = useSelector((state) => state.mapReviews.list);
-    // let reviewListComponents = reviewList.map(element => makeReviewComponents(element));
-
-    // useEffect(() => {
-    //   dispatch(getReviewsAsync());
-    // }, []);
-
-}
 
 const MarkerList = (props) => {
+  const dispatch = useDispatch();
+  let name;
+  let reviewList = useSelector((state) => state.reviews.list);
+  let reviewListComponents;
+  const [isOpenReviews, setIsOpenReviews] = useState(false);
+
+  useEffect(() => {
+    // dispatch(getReviewsAsync({author: 'benny'}));
+    dispatch(getUserReviewsAsync("benny"));
+  }, []);
+
+  reviewListComponents = reviewList.map((review) =>
+    <Review key={review.id} id={review.id} text={review.text} author={review.author} coffeeShop={<CoffeeShop name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>} />
+  );
+
+  function SeeReviews(element){
+      // name = element.id;
+      console.log(reviewList);
+      setIsOpenReviews(!isOpenReviews);
+  }
   const listElements = props.elements;
   const listIcon = props.markerIcon;
   return (
     <div>
       <div className="listFrame">
             {listElements.map((el, i) => (
-              <Marker key={i} icon={listIcon} position={el.coordinates}>
+              <Marker key={i} icon={listIcon} position={el.coordinates} >
                   <Popup>
                       <strong>{el.name}</strong>
                       <br/>
@@ -45,7 +45,13 @@ const MarkerList = (props) => {
                       {el.hours}
                       <br/>
                       <a id="myLink" href="#" onClick={() => { SeeReviews(el) }}>See Reviews</a>
+                      {isOpenReviews &&
+                      <div className="scrollBar">
+                            <ListFrame listName="mapReviews" elements={reviewListComponents} key="mapReview" />
+                      </div>
+                      }
                   </Popup>
+
               </Marker>
 
             ))}
