@@ -21,27 +21,34 @@ router.post('/', async function(req, res, next) {
     const user = await queries.getUser({username: req.body[0]});
     const allUsers = await queries.getAllUsers({});
     const newFriend = req.body[1];
-    if (!user) return res.status(404).send({ message: 'Current user not found' });
+    if (!user) {
+        res.status(404).send({ message: 'Current user not found' })
+        return
+    }
     
     let found = false;
     allUsers.forEach(friend => {
-        if (friend.username.toLowerCase() === newFriend.toLowerCase()){
+        if (friend.username === newFriend){
             found = true
         }
     });
-    if (!found) return res.status(404).send({ message: 'Cannot find user :(' });
+    if (!found){
+        res.status(404).send({ message: 'Cannot find user :(' })
+        return
+    } 
 
-    user.friends.forEach(name => {
-        if (name.toLowerCase() === newFriend.toLowerCase()){
-            return res.status(404).send({ message: "You're already friends with this that user!" });
+    for (let i = 0; i < user.friends.length; i++) {
+        if (user.friends[i] === newFriend){
+            res.status(405).send({ message: "You're already friends with this that user!" });
+            return
         }
-    });
-
+    }
 
     user.friends.push(newFriend);
     user.save()
 
-    return res.status(200).send({ message: 'Friend successfully added!' });
+     res.status(200).send({ message: 'Friend successfully added!' })
+     return
 });
 
 module.exports = router;
