@@ -13,7 +13,6 @@ router.get('/', async function(req, res, next) {
 /* GET a user's reviews. */
 router.get('/:username', async function(req, res, next) {
   const reviews = await queries.getAllReviews({author: req.params.username});
-  console.log("routes reviewss " + reviews);
   if (!reviews) return res.status(404).send({ message: 'No reviews found' });
 
   res.send(reviews);

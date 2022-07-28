@@ -28,7 +28,6 @@ const servicesSlice = createSlice({
                 state.error = null;
             })
             .addCase(createReviewAsync.fulfilled, (state, action) => {
-                //console.log(action.payload)
                 state.createReview = REQUEST_STATE.FULFILLED;
                 state.list.push(action.payload);
             })
@@ -73,18 +72,14 @@ const servicesSlice = createSlice({
             })
             .addCase(getUserReviewsAsync.pending, (state) => {
                 state.getUserReviews = REQUEST_STATE.PENDING;
-                console.log("hi 1");
                 state.error = null;
             })
             .addCase(getUserReviewsAsync.fulfilled, (state, action) => {
                 state.getUserReviews = REQUEST_STATE.FULFILLED;
-                console.log("hi 2");
                 state.list = action.payload;
-                console.log(state.list);
             })
             .addCase(getUserReviewsAsync.rejected, (state, action) => {
                 state.getUserReviews = REQUEST_STATE.REJECTED;
-                console.log("hi 3");
                 state.error = action.error;
             });
     }
