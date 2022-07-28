@@ -22,7 +22,9 @@ function CoffeeMap() {
     function makeLatLonList(review){
         return review.coordinates
     }
-  
+    // getReviewsAsync currently doesn't have any filter, idea is to update the filter
+    // whenever the user clicks on the "see reviews" button in markerlist.js and then only 
+    // reviews from the active coffee shop will appear
     let reviewList = useSelector((state) => state.mapReviews.list);
     let reviewListComponents = reviewList.map(element => makeReviewComponents(element));
     let coordinate_list = reviewList.map(element => makeLatLonList(element));
