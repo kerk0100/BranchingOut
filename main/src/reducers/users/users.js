@@ -54,14 +54,13 @@ const addFriend = async (user, newFriend) => {
         body: JSON.stringify([user, newFriend])
     });
 
-    const data = await response.json();
-    console.log(data)
-    if (!response.ok) {
-        const tempVar = {message:"Not working"}
-        return tempVar
+    if (response.status == 404) {
+        return {message:"User cannot be found :("}
+    } else if (response.status == 405){
+        return {message:"User is already your friend :)"}
+    }else {
+        return {message:"Friend added!"}
     }
-    console.log(data)
-    return {data};
 };
 
 export default {
