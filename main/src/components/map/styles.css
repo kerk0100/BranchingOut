@@ -1,11 +1,13 @@
 .wrapper {
-    display: flex;
+    position: relative;
 }
    
 .reviews {
     background: var(--background-color);
-    flex-basis: 25vh;
-    margin: 10px;
+    /* flex-basis: 50vh; */
+    padding: 25px;
+    z-index: 1;
+    position: relative;
 }
 
 .leaflet-container {
@@ -13,6 +15,8 @@
     height: 100vh;
     float: right;
     border-color: var(--hover-color);
+    position: relative;
+    z-index: -1;
 }
 
 

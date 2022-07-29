@@ -3,9 +3,9 @@ import {Marker, Popup} from 'react-leaflet';
 import MapReviews from "../mapReviews/MapReviews.js";
 import ListFrame from "../list/ListFrame";
 import { useDispatch, useSelector } from "react-redux";
-import {getUserReviewsAsync} from "../../reducers/reviews/thunk";
+import {getReviewsAsync} from "../../reducers/reviews/thunk";
 import React, {useEffect, useState} from "react";
-import CoffeeShop from "../coffeeShop/CoffeeShop";
+import CoffeeShopMap from "./CoffeeShopMap";
 import Review from "../review/Review";
 
 
@@ -15,28 +15,42 @@ const MarkerList = (props) => {
   let reviewList = useSelector((state) => state.reviews.list);
   let reviewListComponents;
   const [isOpenReviews, setIsOpenReviews] = useState(false);
+  const [specificReviews, setSpecificReviews] = useState([]);
 
   useEffect(() => {
-    // dispatch(getReviewsAsync({author: 'benny'}));
-    dispatch(getUserReviewsAsync("benny"));
+    dispatch(getReviewsAsync());
   }, []);
 
-  reviewListComponents = reviewList.map((review) =>
-    <Review key={review.id} id={review.id} text={review.text} author={review.author} coffeeShop={<CoffeeShop name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>} />
-  );
+  let cafeReviewList = [];
+
+  function visibility(){
+    // console.log("here");
+    setIsOpenReviews(!isOpenReviews);
+  }
 
   function SeeReviews(element){
-      // name = element.id;
-      console.log(reviewList);
-      setIsOpenReviews(!isOpenReviews);
+      visibility();
+      // console.log(element.reviews);
+      for (let i = 0; i < element.reviews.length; i++){
+        reviewList.filter((review) => review.id == element.reviews[i])
+        .map((reviews) => cafeReviewList.push(reviews))
+      }
+      // console.log(cafeReviewList);
+      setSpecificReviews(cafeReviewList);
+      // console.log(specificReviews);
   }
+
+  reviewListComponents = specificReviews.map((review) =>
+    <Review key={review.id} id={review.id} text={review.text} author={review.author} coffeeShop={<CoffeeShopMap name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>} />
+  );
+
   const listElements = props.elements;
   const listIcon = props.markerIcon;
   return (
     <div>
       <div className="listFrame">
             {listElements.map((el, i) => (
-              <Marker key={i} icon={listIcon} position={el.coordinates} >
+              <Marker key={i} icon={listIcon} position={el.coordinates} onClick={() => {visibility()}}>
                   <Popup>
                       <strong>{el.name}</strong>
                       <br/>
