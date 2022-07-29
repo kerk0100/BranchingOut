@@ -41,7 +41,7 @@ const MarkerList = (props) => {
   }
 
   reviewListComponents = specificReviews.map((review) =>
-    <Review key={review.id} id={review.id} text={review.text} author={review.author} coffeeShop={<CoffeeShopMap name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>} />
+    <MapReviews key={review.id} id={review.id} text={review.text} author={review.author} coffeeShop={<CoffeeShopMap name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>} />
   );
 
   const listElements = props.elements;
