@@ -45,4 +45,12 @@ router.delete('/:id', async function(req, res, next) {
   res.send(reviews);
 });
 
+/* PUT reviews. */
+router.put('/:id', async function(req, res, next) {
+  console.log(req.params)
+  console.log(req.body)
+  const reviews = await queries.updateOneReview({"id": req.params.id}, { $set: {text: req.body.text} });
+  res.send(reviews);
+});
+
 module.exports = router;

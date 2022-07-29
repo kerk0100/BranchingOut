@@ -3,5 +3,6 @@ export const actionTypes = {
     GET_REVIEWS: 'reviews/getReviews',
     GET_USER_REVIEWS: 'reviews/getUserReviews',
     GET_REVIEWS_COUNT: 'reviews/getReviewsCount',
-    DEL_REVIEW: 'reviews/delReview'
+    DEL_REVIEW: 'reviews/delReview', 
+    EDIT_REVIEW: 'reviews/editReview'
 };
