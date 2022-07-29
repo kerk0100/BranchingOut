@@ -20,7 +20,7 @@ export default function ReviewForm(props) {
     const everyCafe = cafeList;
     const [isVisible, setVisible] = useState(false);
     const [selectedOption, setSelectedOption] = useState(" ");
-    const [selectedAddrOption, setSelectedAddrOption] = useState(null);
+    const [selectedAddrOption, setSelectedAddrOption] = useState(" ");
 
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export default function ReviewForm(props) {
     }
 
     function handleChangeCoffeeShop(event) {
-        console.log(event)
+        // console.log(event)
         // setSelectedOption(event.value)
 
         setSelectedOption(event.value, setVisible(true))
@@ -52,6 +52,7 @@ export default function ReviewForm(props) {
         coffeeShop['name'] = event.value;
         setCoffeeShopValue({...coffeeShop,['name']: event.value})
         setValue({...review, coffeeShop: coffeeShop});
+        setSelectedAddrOption(" ");
         // console.log(review)
         // let filter = {name: event.value}
         // console.log(cafeList)
