@@ -5,17 +5,24 @@
   "dependencies": {
     "@ory/cli": "^0.1.35",
     "@ory/client": "0.0.1-alpha.189",
+    "@owsas/nominatim-js": "^1.0.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.1.3",
+    "cross-fetch": "^3.1.5",
     "dotenv": "^16.0.1",
+    "fs": "^0.0.1-security",
+    "jquery": "^3.6.0",
     "leaflet": "^1.8.0",
     "mongodb": "^4.8.0",
     "mongoose": "^6.4.4",
+    "nominatim": "^0.1.0",
+    "nominatim-js": "^1.0.10",
     "react": "^18.1.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
+    "react-geocode": "^0.2.3",
     "react-leaflet": "^4.0.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
@@ -53,5 +60,10 @@
     "prop-types": "^15.8.1",
     "react-redux": "^8.0.2",
     "uuid": "^8.3.2"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
