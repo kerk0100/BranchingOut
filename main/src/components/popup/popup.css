@@ -6,6 +6,7 @@
     height: 100vh;
     top: 0;
     left: 0;
+    z-index: 99;
 }
 
 .box {
@@ -20,6 +21,7 @@
     padding: 20px;
     border: 1px solid #999;
     overflow: auto;
+    z-index: 99;
 }
 
 .close-icon {

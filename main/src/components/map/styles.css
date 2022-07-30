@@ -1,11 +1,13 @@
 .wrapper {
-    display: flex;
+    position: relative;
 }
    
 .reviews {
     background: var(--background-color);
-    flex-basis: 150vh;
-    margin: 10px;
+    /* flex-basis: 50vh; */
+    padding: 25px;
+    z-index: 1;
+    position: relative;
 }
 
 .leaflet-container {
@@ -13,12 +15,20 @@
     height: 100vh;
     float: right;
     border-color: var(--hover-color);
+    position: relative;
+    z-index: -1;
 }
 
 
 .search {
     text-align: center;
     margin-left: 10px;
+}
+
+.scrollBar {
+    height:120px;
+    overflow:scroll;
+    overflow-x:hidden;
 }
 
 :root {

@@ -1,5 +1,5 @@
 // import React, {useState} from "react";
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './styles.css';
 import Navbar from "../nav/Navbar";
@@ -9,36 +9,73 @@ import markerIcon from "../images/marker.png";
 import MapReviews from "../mapReviews/MapReviews.js";
 import ListFrame from "../list/ListFrame";
 import { useDispatch, useSelector } from "react-redux";
-import { getReviewsAsync } from "../../reducers/mapReviews/thunk";
+import { getReviewsAsync, getAddressReviewsAsync, getCafeByNameAsync } from "../../reducers/mapReviews/thunk";
+import MarkerList from './MarkerList';
+import Map from './Map.js';
+import Creatable, { useCreatable } from 'react-select/creatable';
+const { v4: uuid } = require('uuid');
 
 function CoffeeMap() {
 
+    let sampleURL = "https://cdn.vox-cdn.com/thumbor/UQzcVy9Zwif_Kku9OP_xIH1MVeU=/0x0:1600x1067/1820x1213/filters:focal(672x406:928x662):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/71121846/52002370644_28ad527f48_h.0.jpg"
+    const [selectedAddrOption, setSelectedAddrOption] = useState(null);
+    
+    let cafeList = useSelector((state) => state.mapReviews.list);
+    const everyCafe = cafeList;
+    const [review, setValue] = useState({id: uuid(), text: " ", author: localStorage.getItem("username"), coffeeShop: coffeeShop});
+    const [coffeeShop, setCoffeeShopValue] = useState({name: "name", image: sampleURL, hours: "test", address: "address"});
     const dispatch = useDispatch();
+    const [isVisible, setVisible] = useState(false);
+
+    const [startCenter, setStartCenter] = useState([49.263582,-123.128836]);
+    const [selectedOption, setSelectedOption] = useState("1093 West Broadway, Vancouver, V6H");
+
+    useEffect(() => {
+        dispatch(getReviewsAsync());
+      }, []);
+
     function makeReviewComponents(review) {
       return <MapReviews key={review._id} cafeName={review.name} hours={review.hours} address={review.address}/>;
     }
-  
-    let reviewList = useSelector((state) => state.mapReviews.list);
-    let reviewListComponents = reviewList.map(element => makeReviewComponents(element));
-  
-      useEffect(() => {
-          dispatch(getReviewsAsync());
-        }, []);
-    
-    function getLatLon(){
-        for (let i = 0; i < reviewList; i++){
-            const latlong =  i.address.split(",");
-            const latitude = latlong[0];
-            const longitude = latlong[1];
-            console.log(latitude);
-        }
+
+    function makeLatLonList(review){
+        return review.coordinates
     }
 
-    const startPosition = [49.266683211803446, -123.16634827187337]
-    const enroute = [49.27141046145708, -123.15461071089254]
-    const breka = [49.268639392128684, -123.18674248681495]
-    const beyondBread = [49.26868139635726, -123.18516534787199]
-    const jjBean = [49.26468383359408, -123.16939830733237]
+    function handleChangeCoffeeShop(event) {
+        setSelectedOption(event.value, setVisible(true));
+        let coordinates = []
+        cafeList.filter((element) => element.address === selectedOption)
+        .map((element) => coordinates.push(element.coordinates))
+        setStartCenter(coordinates);
+        // console.log(startCenter); 
+    }
+
+    // function getStartPosition(){
+    //     let coordinates = []
+    //     cafeList.filter((element) => element.address === selectedOption)
+    //     .map((element) => coordinates.push(element.coordinates))
+    //     let temp = coordinates;
+    //     console.log(temp);
+    //     return temp;
+    // }
+
+    function getCafesForSelectMenu() {
+        let allCafesSet = new Set()
+        everyCafe?.map((element) => {
+                allCafesSet.add(element.address)  
+        })
+        let allCafes = [];
+        [...allCafesSet].map((element) => {
+            allCafes.push({value: element, label:element})
+        })
+
+        return allCafes;
+    }
+
+    let reviewList = useSelector((state) => state.mapReviews.list);
+    let reviewListComponents = reviewList.map(element => makeReviewComponents(element));
+    let coordinate_list = reviewList.map(element => makeLatLonList(element));
 
     const markerIconConst = L.icon({
         iconUrl: markerIcon,
@@ -49,43 +86,22 @@ function CoffeeMap() {
         html: `<span style="background-color:rgb(175, 121, 49)" />`
     });
 
+    let mapComponent = <Map reviewList={reviewList} markerIcon={markerIconConst} startCenter={startCenter}/>
+
   return (
       <div>
           <Navbar />
           <div className="wrapper">
               <div className="reviews">
-                <div className="cafeList">
-                    <ListFrame className="cafeList" key="mapReview" elements={reviewListComponents} listName="cafeList" />
-                </div>
+                    Search: 
+                    <div className = "labelForm">
+                    <Creatable options = {getCafesForSelectMenu()}
+                                defaultValue={selectedOption}
+                                onChange={e => handleChangeCoffeeShop(e)}/> 
+
+                    </div>
               </div>
-              <div className='leaflet-container'>
-                  <MapContainer center={startPosition} zoom={14}scrollWheelZoom={true} >
-                      <TileLayer
-                          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                      />
-                            <Marker icon={markerIconConst} position={enroute}>
-                            <Popup>
-                                Enroute Cafe <br /> Best Coffee in Town
-                            </Popup>
-                            </Marker>
-                            <Marker icon={markerIconConst} position={breka}>
-                            <Popup>
-                                Breka Bakery <br /> Open 24 hrs!
-                            </Popup>
-                            </Marker>
-                            <Marker icon={markerIconConst} position={beyondBread}>
-                            <Popup>
-                                Beyond Bread <br /> We sell bread and beyond
-                            </Popup>
-                            </Marker>
-                            <Marker icon={markerIconConst} position={jjBean}>
-                            <Popup>
-                                J.J. Bean <br /> Just a J and his beans
-                            </Popup>
-                            </Marker>
-                  </MapContainer>
-              </div>
+              {mapComponent}
           </div>
       </div>
   );

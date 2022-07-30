@@ -44,4 +44,11 @@ export const addImageReviewAsync = createAsyncThunk(
     async (image) => {
         return await reviewService.uploadImageReview(image);
     }
+    );
+
+export const putReviewAsync = createAsyncThunk(
+    actionTypes.EDIT_REVIEW,
+    async (review) => {
+        return await reviewService.putReview(review);
+    }
 );

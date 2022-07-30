@@ -16,6 +16,13 @@ export const getReviewsAsync = createAsyncThunk(
     }
 );
 
+export const getAddressReviewsAsync = createAsyncThunk(
+    actionTypes.GET_ADDRESS_REVIEWS,
+    async (address) => {
+        return await reviewService.getAddressReviews(address);
+    }
+);
+
 export const getCafeByNameAsync = createAsyncThunk(
     actionTypes.GET_FILTERED_REVIEWS,
     async (filter) => {

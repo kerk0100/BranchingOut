@@ -20,7 +20,7 @@ const ProfilePage = () => {
     const [isOpenFriends, setIsOpenFriends] = useState(false);
 
     useEffect(() => {
-        dispatch(getUserReviewsAsync("Ben"));
+        dispatch(getUserReviewsAsync(user));
     }, []);
 
     reviewListComponents = reviewList.map((review) =>

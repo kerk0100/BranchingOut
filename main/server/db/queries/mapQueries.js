@@ -10,7 +10,10 @@ const mapQueries = {
         return mapReview;
     },
     updateOneMapReview: async function (filter, set) {
+        console.log(filter)
+        console.log(set)
         const mapReview = await Map.updateOne(filter, set);
+        console.log(mapReview)
         return mapReview;
     },
 }
