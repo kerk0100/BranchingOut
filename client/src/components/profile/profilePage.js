@@ -11,7 +11,6 @@ import {getFriendsAsync} from "../../reducers/users/thunk";
 
 const ProfilePage = () => {
     const user = localStorage.getItem("username");
-    const friendsCount = localStorage.getItem("friendsCount");
     const dispatch = useDispatch();
     const [count, setCount] = useState();
     let reviewList = useSelector((state) => state.reviews.list);
@@ -37,6 +36,7 @@ const ProfilePage = () => {
 
     async function getReviewCount(user) {
         const response = await dispatch(getReviewsCountAsync(user));
+        await dispatch(getFriendsAsync(localStorage.username));
         if (response.payload?.message === "No reviews found") {
             setCount(0);
         } else {
@@ -45,10 +45,8 @@ const ProfilePage = () => {
     }
 
     let friendsList = useSelector(state => state.services.friendsList);
+    const friendsCount = friendsList.length;
 
-    useEffect(() => {
-        dispatch(getFriendsAsync(localStorage.username));
-    }, []);
 
     const listItems = friendsList.map((friend) => <p>{friend.username}</p>);
 
