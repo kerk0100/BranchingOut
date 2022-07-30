@@ -48,7 +48,6 @@ function Feed() {
     }, []);
 
   async function handleAddFriend(e) {
-    e.preventDefault();
     const addF = await dispatch(addFriendAsync([localStorage.username, addFriendInput.friendName]));
     var messageStr
     if (addF.payload.message === "User cannot be found :(") {
@@ -56,9 +55,11 @@ function Feed() {
     } else if (addF.payload.message === "User is already your friend :)") {
       messageStr ="<b style='margin-left:15%;color:green;'>" + "User is already your friend :)" + "</b></center>";
     } else {
+      window.location.reload()
       messageStr ="<b style='margin-left:25%;color:green;'>" + "Friend added!" + "</b></center>";
     }
     document.getElementById("friendMessage").innerHTML = messageStr;
+    
 }
 
   const listItems = friendsList.map((friend) => <Friend name={friend.username}/>);
