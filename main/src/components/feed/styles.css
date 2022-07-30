@@ -89,11 +89,11 @@
   background-color: white;
   background-position: 10px 10px; 
   background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
+  padding: 8px 10px 12px 10px;
   transition: width 0.4s ease-in-out;
   margin-left: 10%;
   width: 60%;
-  text-align: center;
+  text-align: left;
 }
 
 /* .addFriendInput:focus{
