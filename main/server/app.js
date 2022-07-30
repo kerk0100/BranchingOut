@@ -25,6 +25,7 @@ app.use('/login', loginRouter);
 app.use('/reviews', reviewRouter);
 app.use('/friends', friendsRouter);
 app.use('/mapReviews', mapRouter);
+app.use('/uploads', express.static('uploads'));
 
 mongoose.connect('mongodb+srv://coffee-brewsters:coffee-brewsters-basics@sandbox.vc456ti.mongodb.net/CoffeeBrewsters?retryWrites=true&w=majority');
 

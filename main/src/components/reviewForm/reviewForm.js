@@ -1,6 +1,6 @@
 import './styles.css';
 import React, { useState, useEffect } from "react";
-import { createReviewAsync} from '../../reducers/reviews/thunk.js';
+import {addImageReviewAsync, createReviewAsync} from '../../reducers/reviews/thunk.js';
 import { getCafeByNameAsync, getReviewsAsync } from '../../reducers/mapReviews/thunk.js';
 import { useDispatch, useSelector} from "react-redux";
 import Navbar from "../nav/Navbar";
@@ -29,7 +29,8 @@ export default function ReviewForm(props) {
     
 
     function handleSubmit(event) {
-        setValue({review});  
+        setValue({review});
+        console.log("hello i am here");
         console.log(review);
         event.preventDefault()
         dispatch(createReviewAsync(review));
@@ -73,6 +74,26 @@ export default function ReviewForm(props) {
         //console.log(cafeList)
         //dispatch(getCafeByNameAsync(filter))
     }
+
+    // function handleChangeCoffeeShopImage(event) {
+    //     let coffeeShop = review.coffeeShop;
+    //     console.log(event.target.value);
+    //     coffeeShop['image'] = event.target.value;
+    //
+    //     setCoffeeShopValue({...coffeeShop,['image']: event.target.value})
+    //     setValue({...review, coffeeShop: coffeeShop});
+    //     console.log(coffeeShop)
+    //     console.log(review)
+    // }
+    function handleChangeCoffeeShopImage(event) {
+        // console.log(event.target.files[0]);
+        const image = new FormData();
+        console.log("test case 1");
+        console.log(review.id);
+        image.append("imageFile", event.target.files[0]);
+        dispatch(addImageReviewAsync([image, review.id]));
+    }
+
 
     function handleClear(event) {
         event.preventDefault();
@@ -125,13 +146,15 @@ export default function ReviewForm(props) {
         <div className="reviewFormWrapper">
             <form id="reviewForm"  onReset={handleClear}>
                 <div className = "labelForm">
+                    <h3>Cafe:</h3>
                     <Creatable options = {getCafesForSelectMenu()}
                                 defaultValue={selectedOption}
                                 onChange={e => handleChangeCoffeeShop(e)}/> 
                     {isVisible && <Creatable options = {searchCoffeeShops()}
                                 defaultValue={selectedAddrOption}
                                 onChange={e => handleChangeCoffeeShopLocationChange(e)}/>}
-                    
+                    <br></br>
+                    <h3>Enter description:</h3>
                     <input
                         id="inputReviewText"
                         name="text"
@@ -139,6 +162,8 @@ export default function ReviewForm(props) {
                         value={review.text}
                         onChange= {e => handleChange(e)}>
                     </input>
+                    <h3>Upload an image:</h3>
+                    <input type="file" name="imageFile" onChange={(event) => handleChangeCoffeeShopImage(event)}></input>
                     {/* <div className = "coffeeShopSearchForm">
                         <p>Cafe Name</p>
                     <input
@@ -164,7 +189,7 @@ export default function ReviewForm(props) {
                     </div>}
                     </div> */}
                 </div>
-                <div className= "formButtons">
+                <div className= "row">
                     <button id = "buttonForm"  onClick={handleSubmit}> Submit</button>
                     <button id = "buttonForm" onClick={handleClear} > Clear </button>
                 </div>

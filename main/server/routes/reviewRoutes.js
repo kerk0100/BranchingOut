@@ -2,7 +2,15 @@ const express = require('express');
 const router = express.Router();
 const queries = require('../db/queries/reviewQueries');
 const mapQueries = require('../db/queries/mapQueries');
+const imageQueries = require('../db/queries/imageQueries');
 const Review = require('../db/models/reviewModel');
+const Image = require('../db/models/imageModel');
+const multer  = require('multer');
+const fs = require('fs');
+
+const upload = multer({ dest: 'uploads/' , rename: function (fieldname, filename) {
+    return filename;
+  }});
 
 /* GET reviews. */
 router.get('/', async function(req, res, next) {
@@ -30,12 +38,17 @@ router.get('/count/:username', async function(req, res, next) {
 
 /* POST reviews. */
 router.post('/', async function (req, res, next) {
-  const coffeeShop = {name: req.body.coffeeShop.name, image:req.body.coffeeShop.image, hours: req.body.coffeeShop.hours}
+  // console.log(req.body.id);
+  const image = await imageQueries.getImage({reviewId: req.body.id});
+  // console.log("test hi im here");
+  // console.log(image);
+  const coffeeShop = {name: req.body.coffeeShop.name, image:'http://localhost:3001/' + image.path, hours: req.body.coffeeShop.hours}
   const review = new Review({id: req.body.id, text: req.body.text, author: req.body.author, coffeeShop: coffeeShop});
   const addedReview = await queries.addOneReview(review);
   await mapQueries.updateOneMapReview(
     {"name": req.body.coffeeShop.name, "address": req.body.coffeeShop.address}, { $push: {reviews: req.body.id}}
     );
+  // console.log(addedReview);
   return res.send(addedReview);
 });
 
@@ -43,6 +56,20 @@ router.post('/', async function (req, res, next) {
 router.delete('/:id', async function(req, res, next) {
   const reviews = await queries.deleteOneReview({id: req.params.id});
   res.send(reviews);
+});
+
+
+/* POST image. */
+router.post('/image/:id', upload.single('imageFile'), async function (req, res, next) {
+  const newImage = new Image();
+  const imageName = req.file.originalname;
+  // newImage.img.data = fs.readFileSync(req.file.path);
+  newImage.contentType = 'image/png';
+  newImage.name = imageName;
+  newImage.reviewId = req.params.id;
+  newImage.path = req.file.path;
+  await newImage.save();
+  res.send('Image name: ' + imageName);
 });
 
 /* PUT reviews. */
