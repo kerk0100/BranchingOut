@@ -29,3 +29,10 @@ export const getFriendsAsync = createAsyncThunk(
         return await UserService.getFriends(username);
     }
 );
+
+export const addFriendAsync = createAsyncThunk(
+    actionTypes.ADD_FRIEND,
+    async ([user, newFriend]) => {
+        return await UserService.addFriend(user, newFriend);
+    }
+);

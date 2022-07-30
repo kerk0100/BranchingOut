@@ -45,10 +45,29 @@ const getFriends = async (username) => {
     return response.json();
 };
 
+const addFriend = async (user, newFriend) => {
+    const response = await fetch('http://localhost:3001/friends', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify([user, newFriend])
+    });
+
+    if (response.status == 404) {
+        return {message:"User cannot be found :("}
+    } else if (response.status == 405){
+        return {message:"User is already your friend :)"}
+    }else {
+        return {message:"Friend added!"}
+    }
+};
+
 export default {
     getUsers,
     checkUser,
     checkUsernameTaken,
     loginUser,
-    getFriends
+    getFriends, 
+    addFriend
 };

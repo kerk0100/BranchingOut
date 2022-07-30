@@ -3,34 +3,9 @@ var router = express.Router();
 const { v4: uuid } = require('uuid');
 const queries = require("../db/queries/userQueries")
 
-// let friend1 = {
-//     name: "Benji Lawson",
-//     reviewCount: "6",
-//     lastReviewed: "Cup of Brown Cafe"
-// }
-
-// let friend2 = {
-//     name: "Olivia ScarTony",
-//     reviewCount: "27",
-//     lastReviewed: "Starby's Iced Coffees Only"
-// }
-
-// let friend3 = {
-//     name: "Amy Nguyen",
-//     reviewCount: "14",
-//     lastReviewed: "Coffee World"
-// }
-
-// let friend4 = {
-//     name: "Lauren Kerker",
-//     reviewCount: "13",
-//     lastReviewed: "Jimmy Johns Vegan Fefes"
-// }
-
-// let friends = [friend1, friend2, friend3, friend4];
-
 router.get('/:username', async function(req, res, next) {
     let user = await queries.getUser({"username": req.params.username});
+    if (!user) return res.send([])
     let friends = user.friends;
 
     if (friends.length > 0){
@@ -40,6 +15,40 @@ router.get('/:username', async function(req, res, next) {
     }
 
     res.send(friends);
+});
+
+router.post('/', async function(req, res, next) {
+    const user = await queries.getUser({username: req.body[0]});
+    const allUsers = await queries.getAllUsers({});
+    const newFriend = req.body[1];
+    if (!user) {
+        res.status(404).send({ message: 'Current user not found' })
+        return
+    }
+    
+    let found = false;
+    allUsers.forEach(friend => {
+        if (friend.username === newFriend){
+            found = true
+        }
+    });
+    if (!found){
+        res.status(404).send({ message: 'Cannot find user :(' })
+        return
+    } 
+
+    for (let i = 0; i < user.friends.length; i++) {
+        if (user.friends[i] === newFriend){
+            res.status(405).send({ message: "You're already friends with this that user!" });
+            return
+        }
+    }
+
+    user.friends.push(newFriend);
+    user.save()
+
+     res.status(200).send({ message: 'Friend successfully added!' })
+     return
 });
 
 module.exports = router;
