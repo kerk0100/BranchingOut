@@ -51,11 +51,27 @@ const deleteReview = async (id) => {
     return res;
   };
 
+const uploadImageReview = async (image) => {
+    //console.log(review)
+    const response = await fetch('http://localhost:3001/reviews/image', {
+        method: 'POST',
+        body: image
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+        const errorMsg = data?.message;
+        throw new Error(errorMsg)
+    }
+
+    return data;
+};
+
 export default {
     createReview,
     getReviews,
     getReviewCount,
     deleteReview,
-    getUserReviews
-
+    getUserReviews,
+    uploadImageReview
 };

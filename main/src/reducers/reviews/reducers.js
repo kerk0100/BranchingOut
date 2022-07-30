@@ -5,7 +5,7 @@ import {
     getReviewsAsync,
     getReviewsCountAsync,
     deleteReviewAsync,
-    getUserReviewsAsync
+    getUserReviewsAsync, addImageReviewAsync
 } from "./thunk";
 
 const INITIAL_STATE = {
@@ -14,6 +14,7 @@ const INITIAL_STATE = {
     getReviews: REQUEST_STATE.IDLE,
     getCount: REQUEST_STATE.IDLE,
     getUserReviews: REQUEST_STATE.IDLE,
+    addImageReview: REQUEST_STATE.IDLE,
     error: null
 };
 
@@ -80,6 +81,18 @@ const servicesSlice = createSlice({
             })
             .addCase(getUserReviewsAsync.rejected, (state, action) => {
                 state.getUserReviews = REQUEST_STATE.REJECTED;
+                state.error = action.error;
+            })
+            .addCase(addImageReviewAsync.pending, (state) => {
+                state.addImageReview = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(addImageReviewAsync.fulfilled, (state, action) => {
+                state.addImageReview = REQUEST_STATE.FULFILLED;
+                // state.list = action.payload;
+            })
+            .addCase(addImageReviewAsync.rejected, (state, action) => {
+                state.addImageReview = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             });
     }

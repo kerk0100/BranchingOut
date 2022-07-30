@@ -38,3 +38,10 @@ export const deleteReviewAsync = createAsyncThunk(
         return await reviewService.deleteReview(id);
     }
 );
+
+export const addImageReviewAsync = createAsyncThunk(
+    actionTypes.ADD_IMAGE_REVIEW,
+    async (image) => {
+        return await reviewService.uploadImageReview(image);
+    }
+);

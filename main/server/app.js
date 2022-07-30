@@ -26,6 +26,7 @@ app.use('/reviews', reviewRouter);
 app.use('/friends', friendsRouter);
 app.use('/mapReviews', mapRouter);
 
+
 mongoose.connect('mongodb+srv://coffee-brewsters:coffee-brewsters-basics@sandbox.vc456ti.mongodb.net/CoffeeBrewsters?retryWrites=true&w=majority');
 
 module.exports = app;

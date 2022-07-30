@@ -2,6 +2,13 @@ const express = require('express');
 const router = express.Router();
 const queries = require('../db/queries/reviewQueries');
 const Review = require('../db/models/reviewModel');
+const Image = require('../db/models/imageModel');
+const multer  = require('multer');
+const fs = require('fs');
+
+const upload = multer({ dest: 'uploads/' , rename: function (fieldname, filename) {
+    return filename;
+  }});
 
 /* GET reviews. */
 router.get('/', async function(req, res, next) {
@@ -40,5 +47,16 @@ router.delete('/:id', async function(req, res, next) {
   const reviews = await queries.deleteOneReview({id: req.params.id});
   res.send(reviews);
 });
+
+router.post('/image', upload.single('imageFile'), async function (req, res, next) {
+  const newImage = new Image();
+  const imageName = req.file.originalname;
+  newImage.img.data = fs.readFileSync(req.file.path);
+  newImage.img.contentType = 'image/png';
+  newImage.img.name = imageName;
+  await newImage.save();
+  res.send('Image name: ' + imageName);
+});
+
 
 module.exports = router;
