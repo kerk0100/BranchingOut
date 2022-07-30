@@ -41,8 +41,8 @@ export const deleteReviewAsync = createAsyncThunk(
 
 export const addImageReviewAsync = createAsyncThunk(
     actionTypes.ADD_IMAGE_REVIEW,
-    async (image) => {
-        return await reviewService.uploadImageReview(image);
+    async ([image, id]) => {
+        return await reviewService.uploadImageReview(image, id);
     }
     );
 

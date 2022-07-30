@@ -51,9 +51,9 @@ const deleteReview = async (id) => {
   };
 
 
-const uploadImageReview = async (image) => {
+const uploadImageReview = async (image, id) => {
     //console.log(review)
-    const response = await fetch('http://localhost:3001/reviews/image', {
+    const response = await fetch('http://localhost:3001/reviews/image/' + id, {
         method: 'POST',
         body: image
     });

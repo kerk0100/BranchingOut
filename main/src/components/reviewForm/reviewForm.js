@@ -30,6 +30,7 @@ export default function ReviewForm(props) {
 
     function handleSubmit(event) {
         setValue({review});
+        console.log("hello i am here");
         console.log(review);
         event.preventDefault()
         dispatch(createReviewAsync(review));
@@ -87,8 +88,10 @@ export default function ReviewForm(props) {
     function handleChangeCoffeeShopImage(event) {
         // console.log(event.target.files[0]);
         const image = new FormData();
+        console.log("test case 1");
+        console.log(review.id);
         image.append("imageFile", event.target.files[0]);
-        dispatch(addImageReviewAsync(image));
+        dispatch(addImageReviewAsync([image, review.id]));
     }
 
 
