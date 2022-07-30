@@ -42,6 +42,9 @@ router.post('/', async function (req, res, next) {
   const image = await imageQueries.getImage({reviewId: req.body.id});
   // console.log("test hi im here");
   // console.log(image);
+  if (image === null) {
+    return res.status(500).send("Error processing image, please try again")
+  }
   const coffeeShop = {name: req.body.coffeeShop.name, image:'/' + image.path, hours: req.body.coffeeShop.hours}
   const review = new Review({id: req.body.id, text: req.body.text, author: req.body.author, coffeeShop: coffeeShop});
   const addedReview = await queries.addOneReview(review);

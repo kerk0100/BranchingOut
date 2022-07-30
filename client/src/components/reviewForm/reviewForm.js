@@ -32,7 +32,7 @@ export default function ReviewForm(props) {
         setValue({review});
         console.log("hello i am here");
         console.log(review);
-        event.preventDefault()
+        event.preventDefault();
         dispatch(createReviewAsync(review));
         alert("Review posted!")
         //window.location = 'localhost:3000/Feed';
