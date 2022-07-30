@@ -10,12 +10,12 @@ const Navbar = () => {
     const username = localStorage.getItem("username");
 
     const setActive = () => {
-        if (window.location.href === "http://localhost:3000/Feed") {
+        if (window.location.href === "/Feed") {
             setFeedActive("active");
-        } else if (window.location.href === "http://localhost:3000/CoffeeMap"){
+        } else if (window.location.href === "/CoffeeMap"){
             setMapActive("active");
         }
-        else if (window.location.href === "http://localhost:3000/Review") {
+        else if (window.location.href === "/Review") {
             setReviewActive("active")
 
         } else {
@@ -33,6 +33,7 @@ const Navbar = () => {
           <a className={reviewActive} href="/Review">Post a Review</a>
           <div className="topnav-right">
               <a className={profileActive} href="/Profile"><b>{username.toUpperCase()}</b></a>
+              <a href="/">Signout</a>
           </div>
       </div>)
 };
