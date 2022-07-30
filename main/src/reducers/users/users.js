@@ -46,15 +46,7 @@ const getFriends = async (username) => {
 };
 
 const addFriend = async (user, newFriend) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
     const response = await fetch('http://localhost:3001/friends', {
-=======
-    const response = await fetch('http://localhost:3001/friends/add', {
->>>>>>> Trying to get my stuff working :(
-=======
-    const response = await fetch('http://localhost:3001/friends', {
->>>>>>> Fixing add friend
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -62,35 +54,13 @@ const addFriend = async (user, newFriend) => {
         body: JSON.stringify([user, newFriend])
     });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Functional add friend button
     if (response.status == 404) {
         return {message:"User cannot be found :("}
     } else if (response.status == 405){
         return {message:"User is already your friend :)"}
     }else {
         return {message:"Friend added!"}
-<<<<<<< HEAD
     }
-=======
-    const data = await response.text();
-=======
-    const data = await response.json();
->>>>>>> Fixing add friend
-    console.log(data)
-    if (!response.ok) {
-        const tempVar = {message:"Not working"}
-        return tempVar
-    }
-    console.log(data)
-    return {data};
->>>>>>> Trying to get my stuff working :(
-=======
-    }
->>>>>>> Functional add friend button
 };
 
 export default {

@@ -48,52 +48,22 @@ function Feed() {
     }, []);
 
   async function handleAddFriend(e) {
-<<<<<<< HEAD
-    e.preventDefault();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Functional add friend button
-=======
->>>>>>> Fixing add friend bug
     const addF = await dispatch(addFriendAsync([localStorage.username, addFriendInput.friendName]));
     var messageStr
     if (addF.payload.message === "User cannot be found :(") {
         messageStr ="<b style='margin-left:18%;color:red;'>" + "User cannot be found :(" + "</b></center>";
     } else if (addF.payload.message === "User is already your friend :)") {
       messageStr ="<b style='margin-left:15%;color:green;'>" + "User is already your friend :)" + "</b></center>";
-<<<<<<< HEAD
     } else {
       window.location.reload()
       messageStr ="<b style='margin-left:25%;color:green;'>" + "Friend added!" + "</b></center>";
     }
     document.getElementById("friendMessage").innerHTML = messageStr;
-<<<<<<< HEAD
-=======
-    const placeholder = "Amy"
-    const addF = await dispatch(addFriendAsync([localStorage.username, placeholder]));
-    if (addF.payload.message === "Current user not found") {
-        window.alert("Current user not found")
-        e.preventDefault();
-    } else if (addF.payload.message === "Friend successfully added!") {
-      window.alert("Friend Added!")
-=======
->>>>>>> Functional add friend button
-    } else {
-      messageStr ="<b style='margin-left:25%;color:green;'>" + "Friend added!" + "</b></center>";
-    }
-<<<<<<< HEAD
->>>>>>> Trying to get my stuff working :(
-=======
-    document.getElementById("friendMessage").innerHTML = messageStr;
->>>>>>> Functional add friend button
-=======
     
->>>>>>> Fixing add friend bug
 }
 
   const listItems = friendsList.map((friend) => <Friend name={friend.username}/>);
-  // console.log(reviewListComponents);
+  console.log(reviewListComponents);
     return (
         <div>
           <Navbar />
@@ -104,10 +74,6 @@ function Feed() {
             <div className="feedFriends">
               <div>
                 <h1 className="fListHeader">Friends</h1>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Functional add friend button
                 <input 
                     id= "addFriendInput"
                     name= "friendName" 
@@ -118,18 +84,8 @@ function Feed() {
                     value={addFriendInput.friendName}>
                 </input>
                 <input className="button-21" onClick={handleAddFriend} value="+"></input>
-<<<<<<< HEAD
               </div>
               <div id="friendMessage"/>
-=======
-              
-                <input className="button-21" onClick={handleAddFriend} value="+ Add Friend"></input>
-              </div>
->>>>>>> Trying to get my stuff working :(
-=======
-              </div>
-              <div id="friendMessage"/>
->>>>>>> Functional add friend button
                 <ListFrame elements= {listItems} listName="friendList"/>
             </div>
           </div>
