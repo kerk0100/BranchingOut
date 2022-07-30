@@ -7,7 +7,6 @@ import {
     deleteReviewAsync,
     getUserReviewsAsync,
     addImageReviewAsync,
-    getUserReviewsAsync,
     putReviewAsync
 } from "./thunk";
 
