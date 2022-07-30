@@ -67,7 +67,7 @@ function Feed() {
     return (
         <div>
           <Navbar />
-          <div className="body">
+          <div className="feedBody">
             <div className="feedReviews">
               <ListFrame key="review" elements={reviewListComponents} listName="reviewList" />
             </div>
