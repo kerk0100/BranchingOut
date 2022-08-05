@@ -59,8 +59,7 @@ function Feed() {
       messageStr ="<b style='margin-left:25%;color:green;'>" + "Friend added!" + "</b></center>";
     }
     document.getElementById("friendMessage").innerHTML = messageStr;
-    
-}
+  }
 
   const listItems = friendsList.map((friend) => <Friend name={friend.username}/>);
   console.log(reviewListComponents);

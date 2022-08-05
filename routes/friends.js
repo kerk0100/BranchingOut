@@ -51,4 +51,37 @@ router.post('/', async function(req, res, next) {
      return
 });
 
+router.post('/remove', async function(req, res, next) {
+    const user = await queries.getUser({username: req.body[0]});
+    const allUsers = await queries.getAllUsers({});
+    const friendToRemove = req.body[1];
+    if (!user) {
+        res.status(404).send({ message: 'User not found' })
+        return
+    }
+    
+    let found = false;
+    allUsers.forEach(friend => {
+        if (friend.username === friendToRemove){
+            found = true
+        }
+    });
+    if (!found){
+        res.status(404).send({ message: 'CUser not found' })
+        return
+    } 
+
+    const index = user.friends.indexOf(friendToRemove);
+    if (index > -1) { // only splice array when item is found
+        user.friends.splice(index, 1); // 2nd parameter means remove one item only
+    } else {
+        res.status(405).send({ message: "You are not friends with that user" });
+    }
+
+    user.save()
+
+     res.status(200).send({ message: 'Friend successfully removed!' })
+     return
+});
+
 module.exports = router;

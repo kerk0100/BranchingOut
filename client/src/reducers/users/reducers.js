@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATE } from '../utils';
-import {loginUserAsync, getFriendsAsync, checkUserAsync, checkUserNameFreeAsync, addFriendAsync} from "./thunk";
+import {loginUserAsync, getFriendsAsync, removeFriendAsync, checkUserAsync, checkUserNameFreeAsync, addFriendAsync} from "./thunk";
 
 const INITIAL_STATE = {
     userlist: [],
@@ -79,6 +79,18 @@ const servicesSlice = createSlice({
             })
             .addCase(addFriendAsync.rejected, (state, action) => {
                 state.addFriend = REQUEST_STATE.REJECTED;
+                state.error = action.error;
+            })
+            .addCase(removeFriendAsync.pending, (state) => {
+                state.removeFriend = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(removeFriendAsync.fulfilled, (state, action) => {
+                state.removeFriend = REQUEST_STATE.FULFILLED;
+                // state.friendsList = action.payload;
+            })
+            .addCase(removeFriendAsync.rejected, (state, action) => {
+                state.removeFriend = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             });
     }

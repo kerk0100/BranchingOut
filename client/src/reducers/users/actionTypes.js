@@ -3,5 +3,6 @@ export const actionTypes = {
     CHECK_USER: 'users/checkUser',
     CHECK_USERNAME_TAKEN: 'users/checkUsernameTaken',
     GET_FRIENDS: 'users/getFriends',
-    ADD_FRIEND: 'users/addFriend'
+    ADD_FRIEND: 'users/addFriend',
+    REMOVE_FRIEND: 'users/removeFriend'
 };
