@@ -12,11 +12,24 @@ import { getReviewsAsync } from "../../reducers/reviews/thunk";
 import { addFriendAsync, getFriendsAsync } from "../../reducers/users/thunk";
 
 function Feed() {
-   const dispatch = useDispatch();
-  function makeReviewComponents(review) {
-    let coffeeShopComponent = <CoffeeShop name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>;
-    return <Review key={review.id} id={review.id} text={review.text} author={review.author} coffeeShop={coffeeShopComponent}/>;
-  }
+  const dispatch = useDispatch();
+ function makeReviewComponents(reviews, friendsList) {
+  if (!reviews || !friendsList)
+    return []
+  let result = []
+   for (var i = 0; i < reviews.length; i++) {
+    var review = reviews[i]
+    for (var j = 0; j < friendsList.length; j++) {
+      if (friendsList[j].username == review.author || localStorage.username == review.author) {
+        let coffeeShopComponent = <CoffeeShop name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>;
+        result.push(<Review key={review.id} id={review.id} text={review.text} author={review.author} coffeeShop={coffeeShopComponent}/>);
+      } else {
+        continue
+      }
+    }
+   }
+   return result
+ }
 
   const initFriendInput = {
     friendName: ""
@@ -34,13 +47,14 @@ function Feed() {
 
   let reviewList = useSelector((state) => state.reviews.list);
   
-  let reviewListComponents = reviewList.map(element => makeReviewComponents(element));
+  
 
     useEffect(() => {
         dispatch(getReviewsAsync());
       }, []);
 
   let friendsList = useSelector(state => state.services.friendsList);
+  let reviewListComponents =  makeReviewComponents(reviewList, friendsList);
 
  
   useEffect(() => {

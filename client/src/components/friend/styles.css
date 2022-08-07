@@ -48,7 +48,7 @@
     float: right;
     appearance: none;
     background-color: #3EB2FD;
-    background-image: linear-gradient(1deg, #e3d8d4, #da1b1b 99%);
+    background-image: linear-gradient(1deg, #e3d8d4, #eb9a9a 99%);
     background-size: calc(100% + 20px) calc(100% + 20px);
     border-radius: 100px;
     border-width: 0;
