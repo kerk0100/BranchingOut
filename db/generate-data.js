@@ -45,19 +45,6 @@ async function generateData() {
             hours:"5am - 1pm Monday-Thursday"
         }
     });
-    // Create map reviews
-    // const mapReview1 = new Map({
-    //     cafeName: "JJ Bean",
-    //     hours: "7am - 9pm",
-    //     address: "4593 W 7th Ave."
-    // });
-
-    //await user1.save();
-    //await user2.save();
-    // await review1.save();
-    // await review2.save();
-    // await review3.save();
-   //await mapReview1.save();
 }
 
 module.exports = generateData;

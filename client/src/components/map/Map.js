@@ -1,13 +1,12 @@
 import './styles.css';
-import React, {useEffect, useState} from "react";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import React from "react";
+import { MapContainer, TileLayer} from 'react-leaflet';
 import MarkerList from './MarkerList';
 
 
 const Map = (props) => {
 
   const startCenter = props.startCenter;
-//   console.log(startCenter);
   const reviewList = props.reviewList;
   const markerIconConst = props.markerIcon;
   return (

@@ -57,7 +57,6 @@ const ProfilePage = () => {
                 <div className="login-form">
                     <div className='row-login'>
                         <div className="profileBox"><h2>{user}</h2></div>
-                        {/*<img className="login-image" src={pug} />*/}
                     </div>
                     <div className="row" id="reviews" onClick={() => togglePopupReviews()}>Reviews count: {count}</div>
                     <div className="row" id="friends" onClick={() => togglePopupFriends()}>Friends count: {friendsCount}</div>

@@ -52,7 +52,6 @@
   height: auto;
   justify-content: center;
   line-height: 1.5;
-  /* padding: 6px 20px; */
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -95,10 +94,6 @@
   width: 60%;
   text-align: left;
 }
-
-/* .addFriendInput:focus{
-  width: 80%;
-} */
 
 .friendMessage{
   width: 100%;

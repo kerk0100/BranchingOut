@@ -6,12 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {getReviewsAsync} from "../../reducers/reviews/thunk";
 import React, {useEffect, useState} from "react";
 import CoffeeShopMap from "./CoffeeShopMap";
-import Review from "../review/Review";
 
 
 const MarkerList = (props) => {
   const dispatch = useDispatch();
-  let name;
   let reviewList = useSelector((state) => state.reviews.list);
   let reviewListComponents;
   const [isOpenReviews, setIsOpenReviews] = useState(false);
@@ -24,20 +22,16 @@ const MarkerList = (props) => {
   let cafeReviewList = [];
 
   function visibility(){
-    // console.log("here");
     setIsOpenReviews(!isOpenReviews);
   }
 
   function SeeReviews(element){
       visibility();
-      // console.log(element.reviews);
       for (let i = 0; i < element.reviews.length; i++){
         reviewList.filter((review) => review.id == element.reviews[i])
         .map((reviews) => cafeReviewList.push(reviews))
       }
-      // console.log(cafeReviewList);
       setSpecificReviews(cafeReviewList);
-      // console.log(specificReviews);
   }
 
   reviewListComponents = specificReviews.map((review) =>

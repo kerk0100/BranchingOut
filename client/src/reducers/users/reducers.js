@@ -75,7 +75,6 @@ const servicesSlice = createSlice({
             })
             .addCase(addFriendAsync.fulfilled, (state, action) => {
                 state.addFriend = REQUEST_STATE.FULFILLED;
-                // state.friendsList = action.payload;
             })
             .addCase(addFriendAsync.rejected, (state, action) => {
                 state.addFriend = REQUEST_STATE.REJECTED;
@@ -87,7 +86,6 @@ const servicesSlice = createSlice({
             })
             .addCase(removeFriendAsync.fulfilled, (state, action) => {
                 state.removeFriend = REQUEST_STATE.FULFILLED;
-                // state.friendsList = action.payload;
             })
             .addCase(removeFriendAsync.rejected, (state, action) => {
                 state.removeFriend = REQUEST_STATE.REJECTED;

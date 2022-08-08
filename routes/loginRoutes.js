@@ -6,7 +6,6 @@ const generateData = require('../db/generate-data')
 
 /* GET users. */
 router.get('/', async function(req, res, next) {
-  // await generateData();
   const users = await queries.getAllUsers({});
   res.send(users);
 });
@@ -29,7 +28,6 @@ router.get('/auth/:username', async function (req, res, next) {
 
 router.post('/', async function (req, res, next) {
   const user = { username: req.body[0], password: req.body[1], friends: []};
-  //users.push(user);
   const addedUser = await queries.addOneUser(user)
 
   return res

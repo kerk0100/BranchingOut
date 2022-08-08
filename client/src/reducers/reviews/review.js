@@ -1,5 +1,4 @@
 const createReview = async (review) => {
-    //console.log(review)
     const response = await fetch('/reviews', {
         method: 'POST',
         headers: {
@@ -52,7 +51,6 @@ const deleteReview = async (id) => {
 
 
 const uploadImageReview = async (image, id) => {
-    //console.log(review)
     const response = await fetch('/reviews/image/' + id, {
         method: 'POST',
         body: image

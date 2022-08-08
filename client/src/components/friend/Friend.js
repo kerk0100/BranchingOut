@@ -26,9 +26,6 @@ export default function Friend(props) {
                     <input className="button-22" onClick={handleRemoveFriend} value="-"></input>
                     
                 </div>
-                {/* <div className="friendInfo" class="pull-right">
-                    
-                </div> */}
             </div>
         </div>
     );

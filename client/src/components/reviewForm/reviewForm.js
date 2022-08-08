@@ -1,12 +1,10 @@
 import './styles.css';
 import React, { useState, useEffect } from "react";
 import {addImageReviewAsync, createReviewAsync} from '../../reducers/reviews/thunk.js';
-import { getCafeByNameAsync, getReviewsAsync } from '../../reducers/mapReviews/thunk.js';
+import { getReviewsAsync } from '../../reducers/mapReviews/thunk.js';
 import { useDispatch, useSelector} from "react-redux";
 import Navbar from "../nav/Navbar";
-import Creatable, { useCreatable } from 'react-select/creatable';
-import Select from 'react-select'
-import ListFrame from "../list/ListFrame";
+import Creatable from 'react-select/creatable';
 const { v4: uuid } = require('uuid');
 
 
@@ -35,7 +33,6 @@ export default function ReviewForm(props) {
         event.preventDefault();
         dispatch(createReviewAsync(review));
         alert("Review posted!")
-        //window.location = 'localhost:3000/Feed';
     }
 
     function handleChange(event) {
@@ -44,8 +41,6 @@ export default function ReviewForm(props) {
     }
 
     function handleChangeCoffeeShop(event) {
-        // console.log(event)
-        // setSelectedOption(event.value)
 
         setSelectedOption(event.value, setVisible(true))
         
@@ -54,10 +49,6 @@ export default function ReviewForm(props) {
         setCoffeeShopValue({...coffeeShop,['name']: event.value})
         setValue({...review, coffeeShop: coffeeShop});
         setSelectedAddrOption(" ");
-        // console.log(review)
-        // let filter = {name: event.value}
-        // console.log(cafeList)
-        //dispatch(getCafeByNameAsync(filter))
     }
 
     function handleChangeCoffeeShopLocationChange(event) {
@@ -68,25 +59,9 @@ export default function ReviewForm(props) {
         setCoffeeShopValue({...coffeeShop,['address']: event.value.address})
         setCoffeeShopValue({...coffeeShop,['hours']: event.value.hours})
         setValue({...review, coffeeShop: coffeeShop});
-        // console.log(coffeeShop)
-        // console.log(review)
-        // let filter = {name: event.value}
-        //console.log(cafeList)
-        //dispatch(getCafeByNameAsync(filter))
     }
 
-    // function handleChangeCoffeeShopImage(event) {
-    //     let coffeeShop = review.coffeeShop;
-    //     console.log(event.target.value);
-    //     coffeeShop['image'] = event.target.value;
-    //
-    //     setCoffeeShopValue({...coffeeShop,['image']: event.target.value})
-    //     setValue({...review, coffeeShop: coffeeShop});
-    //     console.log(coffeeShop)
-    //     console.log(review)
-    // }
     function handleChangeCoffeeShopImage(event) {
-        // console.log(event.target.files[0]);
         const image = new FormData();
         console.log("test case 1");
         console.log(review.id);
@@ -111,20 +86,6 @@ export default function ReviewForm(props) {
         .map((element) => addressList.push({label:element.address, value:element}))
 
         return(addressList)
-        
-        // let filter = {name: selectedOption}
-        // console.log(filter)
-        // //dispatch(getCafeByNameAsync(filter))
-        // console.log(cafeList)
-        // setVisible(cafeList.length !== 0);
-    }
-
-    function renderOptions() {
-        let options = cafeList.map((cafe) => {
-            <option value={cafe.address}></option>
-        })
-        return options
-
     }
 
     function getCafesForSelectMenu() {
@@ -164,30 +125,6 @@ export default function ReviewForm(props) {
                     </input>
                     <h3>Upload an image:</h3>
                     <input type="file" name="imageFile" onChange={(event) => handleChangeCoffeeShopImage(event)}></input>
-                    {/* <div className = "coffeeShopSearchForm">
-                        <p>Cafe Name</p>
-                    <input
-                        id="inputCoffeeShopName"
-                        name="name"
-                        type="textarea"
-                        value= {coffeeShop.name}
-                        onChange= {e => handleChangeCoffeeShop(e)}> 
-                    </input>
-                    <button id = "buttonCoffeeShopSearch" onClick={searchCoffeeShops}> Search Cafes</button>
-                    {isVisible && <div>
-                        <select
-                        id="inputCoffeeShopAddress"
-                        name="address"
-                        value={coffeeShop.address}
-                        onChange= {e => handleChangeCoffeeShop(e)}
-                        >
-                        {cafeList.map((cafe) => (
-                            <option value={cafe.address}>{cafe.address}</option>)
-                        )}
-                        </select>
-                        <button id = "buttonForm"  onClick={handleSubmit}> Add Cafe</button>
-                    </div>}
-                    </div> */}
                 </div>
                 <div className= "row">
                     <button id = "buttonForm"  onClick={handleSubmit}> Submit</button>

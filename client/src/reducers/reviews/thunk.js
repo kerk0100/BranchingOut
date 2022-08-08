@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { actionTypes } from './actionTypes';
 import reviewService from './review';
-import mapService from '../mapReviews/review'
 
 
 export const createReviewAsync = createAsyncThunk(

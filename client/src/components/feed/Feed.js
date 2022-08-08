@@ -91,8 +91,7 @@ function Feed() {
                     id= "addFriendInput"
                     name= "friendName" 
                     className="addFriendInput"
-                    type="text" 
-                    // placeholder="username" 
+                    type="text"  
                     onChange={handleInputChange}
                     value={addFriendInput.friendName}>
                 </input>

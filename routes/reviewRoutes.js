@@ -16,7 +16,6 @@ const upload = multer({ dest: 'uploads/' , rename: function (fieldname, filename
 router.get('/', async function(req, res, next) {
   console.log(req.body)
   const reviews = await queries.getAllReviews({find: req.body});
-  //console.log(reviews);
   res.send(reviews);
 });
 
@@ -38,10 +37,7 @@ router.get('/count/:username', async function(req, res, next) {
 
 /* POST reviews. */
 router.post('/', async function (req, res, next) {
-  // console.log(req.body.id);
   const image = await imageQueries.getImage({reviewId: req.body.id});
-  // console.log("test hi im here");
-  // console.log(image);
   if (image === null) {
     return res.status(500).send("Error processing image, please try again")
   }
@@ -51,7 +47,6 @@ router.post('/', async function (req, res, next) {
   await mapQueries.updateOneMapReview(
     {"name": req.body.coffeeShop.name, "address": req.body.coffeeShop.address}, { $push: {reviews: req.body.id}}
     );
-  // console.log(addedReview);
   return res.send(addedReview);
 });
 
@@ -66,7 +61,6 @@ router.delete('/:id', async function(req, res, next) {
 router.post('/image/:id', upload.single('imageFile'), async function (req, res, next) {
   const newImage = new Image();
   const imageName = req.file.originalname;
-  // newImage.img.data = fs.readFileSync(req.file.path);
   newImage.contentType = 'image/png';
   newImage.name = imageName;
   newImage.reviewId = req.params.id;

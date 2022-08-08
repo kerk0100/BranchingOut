@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-// const { v4: uuid } = require('uuid');
 const queries = require('../db/queries/mapQueries');
 const Map = require('../db/models/mapModel');
-const generateData = require('../db/generate-data');
 
 /* GET reviews. */
 router.get('/', async function(req, res, next) {
