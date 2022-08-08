@@ -3,6 +3,7 @@
     flex-direction: column;
     color: rgb(77, 49, 13);
     width: 100%;
+    display:inline-block;
 }
 
 .friend{
@@ -22,14 +23,13 @@
 }
 
 .friendName{
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
     width: 100%;
     /* text-transform: uppercase; */
     
 }
-
-
 
 .friendButton {
     background-color: rgb(189, 201, 209);
@@ -42,4 +42,47 @@
     text-align: center;
     width: 20%;
     float: right
+  }
+
+  .button-22 {
+    float: right;
+    appearance: none;
+    background-color: #3EB2FD;
+    background-image: linear-gradient(1deg, #e3d8d4, #eb9a9a 99%);
+    background-size: calc(100% + 20px) calc(100% + 20px);
+    border-radius: 100px;
+    border-width: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: CircularStd,sans-serif;
+    font-size: 1rem;
+    height: auto;
+    justify-content: center;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .2s,background-position .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 15%;
+    margin-left: 2px;
+  }
+  
+  .button-22:active,
+  .button-22:focus {
+    outline: none;
+  }
+  
+  .button-22:hover {
+    background-position: -20px -20px;
+  }
+  
+  .button-22:focus:not(:active) {
+    box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
   }

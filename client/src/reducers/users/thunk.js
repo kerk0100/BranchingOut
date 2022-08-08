@@ -36,3 +36,10 @@ export const addFriendAsync = createAsyncThunk(
         return await UserService.addFriend(user, newFriend);
     }
 );
+
+export const removeFriendAsync = createAsyncThunk(
+    actionTypes.REMOVE_FRIEND,
+    async ([user, exitFriend]) => {
+        return await UserService.removeFriend(user, exitFriend);
+    }
+);

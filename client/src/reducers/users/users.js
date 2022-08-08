@@ -63,11 +63,30 @@ const addFriend = async (user, newFriend) => {
     }
 };
 
+const removeFriend = async (user, exitFriend) => {
+    const response = await fetch('/friends/remove', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify([user, exitFriend])
+    });
+
+    if (response.status == 404) {
+        return {message:"User cannot be found :("}
+    } else if (response.status == 405){
+        return {message:"You are not friends with that user"}
+    }else {
+        return {message:"Friend removed!"}
+    }
+};
+
 export default {
     getUsers,
     checkUser,
     checkUsernameTaken,
     loginUser,
     getFriends, 
-    addFriend
+    addFriend,
+    removeFriend
 };
