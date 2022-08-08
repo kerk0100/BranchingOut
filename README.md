@@ -40,13 +40,19 @@ Stretch requirements: <br />
 
 ## List of contributions
 
-Amy: Implemented the login component. Created user authentication & the ability to create a new account. Worked to allow users to add personal photos to their reviews.
+**Amy:** Implemented the login component. Created user authentication & the ability to create a new account. Worked to allow users to add personal photos to their reviews.
 <br />
-Ben: Implemented the friends component. Users can add friends to their account to view their reviews. Also created templates that were used throughout the project, for example, the list framework. Worked to deploy our app on Heroku.
 <br />
-Olivia: Did all the styling for the app. Worked on the feed component. Gave users the ability to add, edit and delete reviews. 
+
+**Ben:** Implemented the friends component. Users can add friends to their account to view their reviews. Also created templates that were used throughout the project, for example, the list framework. Worked to deploy our app on Heroku.
 <br />
-Lauren: Worked on the map component. Worked with cafe data from Vancouver. Added reviews to the map for each specific cafe. 
+<br />
+
+**Olivia:** Did all the styling for the app. Worked on the feed component. Gave users the ability to add, edit and delete reviews. 
+<br />
+<br />
+
+**Lauren:** Worked on the map component. Worked with cafe data from Vancouver. Added reviews to the map for each specific cafe. 
 
 
 
