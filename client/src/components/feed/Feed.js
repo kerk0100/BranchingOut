@@ -23,6 +23,7 @@ function Feed() {
       if (friendsList[j].username == review.author || localStorage.username == review.author) {
         let coffeeShopComponent = <CoffeeShop name= {review.coffeeShop.name} image={review.coffeeShop.image} hours={review.coffeeShop.hours}/>;
         result.push(<Review key={review.id} id={review.id} text={review.text} author={review.author} coffeeShop={coffeeShopComponent}/>);
+        break
       } else {
         continue
       }
