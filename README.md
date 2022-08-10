@@ -25,7 +25,7 @@ Stretch requirements: <br />
 
 ## How tech from Units 1-5 are used in the project:
 
-* Consistent styling with CSS is used throughout the project. We used Bootstrap to create the Navigation bar, but used plain CSS to style everything else in the project. We used HTML and JSX within our React components.(Unit 1)<br />
+* Consistent styling with CSS is used throughout the project. We used plain CSS to style everything in the project. We used HTML and JSX within our React components.(Unit 1)<br />
 * Our project is split into many different functional components and both React and Redux states are used throughout the application to manage state. For example, we use Redux to keep track of information regarding the currently logged in user and React state to manage visibility of components (such as reviews) based on the permissions of the user (for example, the edit/delete buttons on a review are only rendered on the frontend if the current user is also the author of the review) (Unit 2)<br />
 * We use Express and routing in order to issue REST commands such as GET/POST/etc.. to read, update, and delete data accordingly. When rendering the main feed, we use a GET request with parameters to filter the returned content based on the user. Users can also create reviews, which uses POST to store the review and the accompanying image in the MongoDB backend.  This allows us to keep the frontend and the backend as seperate functional components. (Unit 3)<br />
 * We store all our data in a persisting MongoDB database, using different collections for storing Cafe information, Review data, Review images, and User information. Each of these collections store data used throughout the project and are retrieved, updated, or deleted based on user actions on the frontend. We used the mongoose package to manage our data models and the schemas used throughout the code, allowing us to have consistently formatted data in our database. We also took advantage of the MongoDB operations $set and $filter to tailor the information returned from our database (for example, we filtered reviews such that only those written by a user's friends are returned) (Unit 4)<br />
@@ -41,7 +41,7 @@ Stretch requirements: <br />
 
 ## List of contributions
 
-**Amy:** Implemented the login component. Created user authentication & the ability to create a new account. Worked to allow users to add personal photos to their reviews.
+**Amy:** Implemented the login component. Implemented user authentication and profile page, as well as the ability to create a new account. Worked to allow users to add personal photos to their reviews.
 <br />
 <br />
 
