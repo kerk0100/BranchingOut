@@ -29,7 +29,7 @@ function Feed() {
       }
     }
    }
-   return result
+   return result.reverse()
  }
 
   const initFriendInput = {
